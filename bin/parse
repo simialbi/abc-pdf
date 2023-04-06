@@ -221,9 +221,9 @@ PHP;
             $file = substr($file, 0, -2);
         }
         if (!empty($method['return']['name'])) {
-            $file .= "): {$method['return']['type']}\n    {\n       return parent::{$method['name']}(";
+            $file .= "): {$method['return']['type']}\n    {\n        return parent::{$method['name']}(";
         } else {
-            $file .= "): void\n    {\n       parent::{$method['name']}(";
+            $file .= "): void\n    {\n        parent::{$method['name']}(";
         }
         foreach ($method['params'] as $name => $param) {
             $file .= "\$$name, ";
