@@ -1,0 +1,17 @@
+{
+    "name": "simialbi/abc-pdf",
+    "type": "library",
+    "require": {
+        "php": ">=8.0",
+        "ext-com_dotnet": "*",
+        "ext-dom": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ABCpdf\\": "src"
+        }
+    },
+    "bin": [
+        "bin/parse"
+    ]
+}
