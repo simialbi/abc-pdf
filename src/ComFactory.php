@@ -2,17 +2,19 @@
 
 namespace ABCPdf;
 
-/**
+use DOTNET;
 
+/**
  */
-class ComFactory extends \DOTNET {
+class ComFactory extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
-        string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $datatype_name = 'WebSupergoo.ABCpdf12.ComFactory',
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -25,7 +27,7 @@ class ComFactory extends \DOTNET {
      */
     public function CreateDoc(): Doc
     {
-       return parent::CreateDoc();
+        return parent::CreateDoc();
     }
 
     /**
@@ -35,7 +37,7 @@ class ComFactory extends \DOTNET {
      */
     public function CreateImage(): XImage
     {
-       return parent::CreateImage();
+        return parent::CreateImage();
     }
 
     /**
@@ -45,7 +47,7 @@ class ComFactory extends \DOTNET {
      */
     public function CreateXColor(): XColor
     {
-       return parent::CreateXColor();
+        return parent::CreateXColor();
     }
 
     /**
@@ -55,7 +57,7 @@ class ComFactory extends \DOTNET {
      */
     public function CreateXPoint(): XPoint
     {
-       return parent::CreateXPoint();
+        return parent::CreateXPoint();
     }
 
     /**
@@ -65,7 +67,7 @@ class ComFactory extends \DOTNET {
      */
     public function CreateXRect(): XRect
     {
-       return parent::CreateXRect();
+        return parent::CreateXRect();
     }
 
     /**
@@ -75,7 +77,7 @@ class ComFactory extends \DOTNET {
      */
     public function CreateXSaveTemplateData(): XSaveTemplateData
     {
-       return parent::CreateXSaveTemplateData();
+        return parent::CreateXSaveTemplateData();
     }
 
     /**
@@ -85,7 +87,7 @@ class ComFactory extends \DOTNET {
      */
     public function CreateXSettings(): XSettings
     {
-       return parent::CreateXSettings();
+        return parent::CreateXSettings();
     }
 
     /**
@@ -95,7 +97,7 @@ class ComFactory extends \DOTNET {
      */
     public function CreateXTextStyle(): XTextStyle
     {
-       return parent::CreateXTextStyle();
+        return parent::CreateXTextStyle();
     }
 
     /**
@@ -105,6 +107,6 @@ class ComFactory extends \DOTNET {
      */
     public function CreateXTransform(): XTransform
     {
-       return parent::CreateXTransform();
+        return parent::CreateXTransform();
     }
 }

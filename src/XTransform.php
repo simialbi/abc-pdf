@@ -2,18 +2,21 @@
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property string $String The transform as a string.
  */
-class XTransform extends \DOTNET {
+class XTransform extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
-        string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $datatype_name = 'WebSupergoo.ABCpdf12.XTransform',
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -32,7 +35,7 @@ class XTransform extends \DOTNET {
      */
     public function Invert(): void
     {
-       parent::Invert();
+        parent::Invert();
     }
 
     /**
@@ -49,7 +52,7 @@ class XTransform extends \DOTNET {
      */
     public function Magnify(float $ScaleX, float $ScaleY, float $AnchorX, float $AnchorY): void
     {
-       parent::Magnify($ScaleX, $ScaleY, $AnchorX, $AnchorY);
+        parent::Magnify($ScaleX, $ScaleY, $AnchorX, $AnchorY);
     }
 
     /**
@@ -59,7 +62,7 @@ class XTransform extends \DOTNET {
      */
     public function Reset(): void
     {
-       parent::Reset();
+        parent::Reset();
     }
 
     /**
@@ -73,7 +76,7 @@ class XTransform extends \DOTNET {
      */
     public function Rotate(float $Angle, float $AnchorX, float $AnchorY): void
     {
-       parent::Rotate($Angle, $AnchorX, $AnchorY);
+        parent::Rotate($Angle, $AnchorX, $AnchorY);
     }
 
     /**
@@ -90,7 +93,7 @@ class XTransform extends \DOTNET {
      */
     public function Skew(float $SkewX, float $SkewY, float $AnchorX, float $AnchorY): void
     {
-       parent::Skew($SkewX, $SkewY, $AnchorX, $AnchorY);
+        parent::Skew($SkewX, $SkewY, $AnchorX, $AnchorY);
     }
 
     /**
@@ -102,6 +105,6 @@ class XTransform extends \DOTNET {
      */
     public function Translate(float $ShiftX, float $ShiftY): void
     {
-       parent::Translate($ShiftX, $ShiftY);
+        parent::Translate($ShiftX, $ShiftY);
     }
 }

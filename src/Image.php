@@ -2,6 +2,8 @@
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property-read XRect $BoundingBox The physical bounds of the image in points.
@@ -15,14 +17,15 @@ namespace ABCPdf;
  * @property-read float $VRes The vertical resolution of the current frame (DPI).
  * @property-read int $Width The width of the current frame (pixels).
  */
-class Image extends \DOTNET {
+class Image extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
-        string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $datatype_name = 'WebSupergoo.ABCpdf12.Image',
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -34,7 +37,7 @@ class Image extends \DOTNET {
      */
     public function Clear(): void
     {
-       parent::Clear();
+        parent::Clear();
     }
 
     /**
@@ -47,7 +50,7 @@ class Image extends \DOTNET {
      */
     public function SetData(array $Data): void
     {
-       parent::SetData($Data);
+        parent::SetData($Data);
     }
 
     /**
@@ -59,7 +62,7 @@ class Image extends \DOTNET {
      */
     public function SetFile(string $FilePath): void
     {
-       parent::SetFile($FilePath);
+        parent::SetFile($FilePath);
     }
 
     /**
@@ -77,6 +80,6 @@ class Image extends \DOTNET {
      */
     public function SetMask(XImage $Mask, bool $Invert): void
     {
-       parent::SetMask($Mask, $Invert);
+        parent::SetMask($Mask, $Invert);
     }
 }

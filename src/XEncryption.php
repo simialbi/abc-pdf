@@ -2,6 +2,8 @@
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property bool $CanAssemble Whether a user can assemble the document.
@@ -19,14 +21,15 @@ namespace ABCPdf;
  * @property-read int $StringCryptionMethod The crypt method for strings for encryption levels of type 4 or above.
  * @property int $Type The level of encryption to use.
  */
-class XEncryption extends \DOTNET {
+class XEncryption extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
-        string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $datatype_name = 'WebSupergoo.ABCpdf12.XEncryption',
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -42,6 +45,6 @@ class XEncryption extends \DOTNET {
      */
     public function SetCryptMethods(int $StringMethod, int $StreamMethod = null): void
     {
-       parent::SetCryptMethods($StringMethod, $StreamMethod);
+        parent::SetCryptMethods($StringMethod, $StreamMethod);
     }
 }

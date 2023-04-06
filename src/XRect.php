@@ -2,6 +2,8 @@
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property float $Bottom The bottom coordinate.
@@ -13,14 +15,15 @@ namespace ABCPdf;
  * @property float $Top The top coordinate.
  * @property float $Width The width of the rectangle.
  */
-class XRect extends \DOTNET {
+class XRect extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
-        string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $datatype_name = 'WebSupergoo.ABCpdf12.XRect',
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -34,7 +37,7 @@ class XRect extends \DOTNET {
      */
     public function Inset(float $X, float $Y): void
     {
-       parent::Inset($X, $Y);
+        parent::Inset($X, $Y);
     }
 
     /**
@@ -48,7 +51,7 @@ class XRect extends \DOTNET {
      */
     public function Magnify(float $X, float $Y): void
     {
-       parent::Magnify($X, $Y);
+        parent::Magnify($X, $Y);
     }
 
     /**
@@ -58,7 +61,7 @@ class XRect extends \DOTNET {
      */
     public function Move(float $X, float $Y): void
     {
-       parent::Move($X, $Y);
+        parent::Move($X, $Y);
     }
 
     /**
@@ -71,7 +74,7 @@ class XRect extends \DOTNET {
      */
     public function Position(float $X, float $Y): void
     {
-       parent::Position($X, $Y);
+        parent::Position($X, $Y);
     }
 
     /**
@@ -85,7 +88,7 @@ class XRect extends \DOTNET {
      */
     public function Resize(float $W, float $H): void
     {
-       parent::Resize($W, $H);
+        parent::Resize($W, $H);
     }
 
     /**
@@ -94,13 +97,13 @@ class XRect extends \DOTNET {
      * the width and height. The corner moved to the location is indicated
      * by the Pin property. The default
      * pin corner is the bottom left. 
-     * @param  $X 
+     * @param  $X
      * @param float $Y The new bottom position.
      * @param float $W The new width.
      * @param float $H The new height.
      */
     public function SetRect($X, float $Y, float $W, float $H): void
     {
-       parent::SetRect($X, $Y, $W, $H);
+        parent::SetRect($X, $Y, $W, $H);
     }
 }

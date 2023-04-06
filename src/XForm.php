@@ -2,22 +2,25 @@
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property-read XField
-                  Collection $Fields All top-level fields in the form.
+ * Collection $Fields All top-level fields in the form.
  * @property bool $FormatFields Whether values should be formatted before insertion into fields.
  * @property bool $GenerateAppearances Whether field appearances should be pre-generated.
  * @property bool $NeedAppearances Whether the viewer should automatically regenerate field appearances.
  */
-class XForm extends \DOTNET {
+class XForm extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
-        string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $datatype_name = 'WebSupergoo.ABCpdf12.XForm',
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -32,7 +35,7 @@ class XForm extends \DOTNET {
      */
     public function Refresh(): void
     {
-       parent::Refresh();
+        parent::Refresh();
     }
 
     /**
@@ -44,6 +47,6 @@ class XForm extends \DOTNET {
      */
     public function Stamp(): void
     {
-       parent::Stamp();
+        parent::Stamp();
     }
 }

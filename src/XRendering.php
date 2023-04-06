@@ -2,6 +2,8 @@
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property bool $AntiAliasImages Whether to anti-alias images.
@@ -25,19 +27,20 @@ namespace ABCPdf;
  * @property bool $Overprint Whether to apply overprint.
  * @property bool $SaveAlpha Whether to save the alpha channel into the output.
  * @property bool $SaveAppend Whether to append to (rather than to overwrite) existing image
-                  files.
+ * files.
  * @property int $SaveCompression The preferred compression method.
  * @property int $SaveQuality The output file quality for lossy compression.
  * @property bool $UseEmbeddedHalftone Whether to use embedded halftones.
  */
-class XRendering extends \DOTNET {
+class XRendering extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
-        string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $datatype_name = 'WebSupergoo.ABCpdf12.XRendering',
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -64,7 +67,7 @@ class XRendering extends \DOTNET {
      */
     public function GetData(string $Name): array
     {
-       return parent::GetData($Name);
+        return parent::GetData($Name);
     }
 
     /**
@@ -82,6 +85,6 @@ class XRendering extends \DOTNET {
      */
     public function Save(string $Path): void
     {
-       parent::Save($Path);
+        parent::Save($Path);
     }
 }

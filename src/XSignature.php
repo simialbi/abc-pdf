@@ -2,29 +2,32 @@
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
  * @property-read bool $IsModified Whether the PDF has been modified after signing.
  * @property-read bool $IsTimeValid Whether the signature's certificate was
-time-valid when the document was signed.
+ * time-valid when the document was signed.
  * @property-read bool $IsTrusted Whether the signature's certificate is
-trusted according to the validation policy.
+ * trusted according to the validation policy.
  * @property string $Location The location of the signing.
  * @property string $Reason The reason for signing.
  * @property string $Signer The name of the person signing.
  * @property Date $SigningUtcTime The time of signing in UTC format.
  * @property string $TimestampServiceUrl The URL to a time-stamping
-                        service.
- * @property int $ValidationPolicy The validation policy for 
-certificates.
+ * service.
+ * @property int $ValidationPolicy The validation policy for
+ * certificates.
  */
-class XSignature extends \DOTNET {
+class XSignature extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
-        string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $datatype_name = 'WebSupergoo.ABCpdf12.XSignature',
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -48,7 +51,7 @@ class XSignature extends \DOTNET {
      */
     public function Commit(): void
     {
-       parent::Commit();
+        parent::Commit();
     }
 
     /**
@@ -62,12 +65,12 @@ class XSignature extends \DOTNET {
      * System.Security.Cryptography.X509Certificates (in .NET BCL) and then extract
      * certificate details such as the subject, the issuer, the serial number,
      * the version, etc. See the Annotations example project for details. 
-     * @return Array of Arrays of Bytes The array of encoded X.509 data for the
-certificate(s).
+     * @return array The array of encoded X.509 data for the
+     * certificate(s).
      */
-    public function GetCertificates(): Array of Arrays of Bytes
+    public function GetCertificates(): array
     {
-       return parent::GetCertificates();
+        return parent::GetCertificates();
     }
 
     /**
@@ -87,7 +90,7 @@ certificate(s).
      */
     public function Sign(array|string $PathOrData, string $Password): void
     {
-       parent::Sign($PathOrData, $Password);
+        parent::Sign($PathOrData, $Password);
     }
 
     /**
@@ -138,11 +141,11 @@ certificate(s).
      * accessed by using
      * System.Security.Cryptography.X509Certificates.X509Store
      * (in .NET BCL). 
-     * @param  $Certificates 
+     * @param  $Certificates
      * @return bool Whether the signature is valid.
      */
     public function Validate($Certificates): bool
     {
-       return parent::Validate($Certificates);
+        return parent::Validate($Certificates);
     }
 }

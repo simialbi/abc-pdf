@@ -2,6 +2,8 @@
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property int $Engine The engine to use for HTML import operations.
@@ -10,10 +12,10 @@ namespace ABCPdf;
  * @property bool $AddMovies Whether active content such as movies should be added.
  * @property bool $AddTags Whether location of certain tags should be noted.
  * @property bool $AutoTruncate Whether to automatically clip redundant content at the end
-                  of the page.
+ * of the page.
  * @property int $BrowserWidth The width of the virtual browser in pixels.
  * @property int $ContentCount The minimum number of content items required for a page to
-                  be valid.
+ * be valid.
  * @property bool $DoMarkup Whether HTML pages are marked up before conversion to PDF.
  * @property bool $FontEmbed Whether fonts should be embedded rather than referenced.
  * @property bool $FontProtection Whether fonts should be protected.
@@ -22,9 +24,9 @@ namespace ABCPdf;
  * @property bool $HostWebBrowser Whether to host a WebBrowser control.
  * @property string $HttpAdditionalHeaders Additional HTTP headers to send in the request.
  * @property int $ImageQuality The quality of compression acceptable for continuous tone
-                  images such as JPEGs.
- * @property string $LogonName A user name to be used for 
-            authentication.
+ * images such as JPEGs.
+ * @property string $LogonName A user name to be used for
+ * authentication.
  * @property string $LogonPassword A password to be used for authentication.
  * @property bool $MakeFieldNamesUnique Whether field names should be changed to make them unique.
  * @property int $MaxAtomicImageSize The maximum size at which an image may be regarded as atomic.
@@ -32,7 +34,7 @@ namespace ABCPdf;
  * @property bool $NoCookie Whether to disable automatic cookies.
  * @property string $OnLoadScript A script to be run after the page is loaded.
  * @property bool $PageCacheEnabled Whether the page cache should be searched before rendering
-                  the page.
+ * the page.
  * @property int $PageCacheExpiry The length of time that pages can be held in the cache (ms).
  * @property int $PageCacheSize The number of pages that can be held in the cache.
  * @property bool $Paged Whether content should be rendered in multipaged format.
@@ -42,7 +44,7 @@ namespace ABCPdf;
  * @property Integer $RepaintTimeout Maximum time to wait for the page to finish animation (ms).
  * @property int $RequestMethod The request method for URL.
  * @property int $RetryCount The number of times a page should be retried if unavailable
-                  or invalid.
+ * or invalid.
  * @property bool $TargetLinks Whether hyperlinks should be allowed to open new windows.
  * @property int $Timeout The maximum amount of time allowed for obtaining a page (ms).
  * @property int $TransferModule The module for obtaining URI/HTML data.
@@ -54,14 +56,15 @@ namespace ABCPdf;
  * @property int $UseTheme Whether to use theme or not.
  * @property bool $UseVideo Whether to enable video.
  */
-class XHtmlOptions extends \DOTNET {
+class XHtmlOptions extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
-        string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $datatype_name = 'WebSupergoo.ABCpdf12.XHtmlOptions',
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -77,7 +80,7 @@ class XHtmlOptions extends \DOTNET {
      */
     public function GetScriptReturn(int $ID): string
     {
-       return parent::GetScriptReturn($ID);
+        return parent::GetScriptReturn($ID);
     }
 
     /**
@@ -92,11 +95,11 @@ class XHtmlOptions extends \DOTNET {
      * one area.The IDs match up directly on a one-to-one basis with the XRects
      * returned by the GetTagRects method. 
      * @param int $ID The Object ID of the object.
-     * @return Array of Strings The IDs of tagged visible HTML objects.
+     * @return array The IDs of tagged visible HTML objects.
      */
-    public function GetTagIDs(int $ID): Array of Strings
+    public function GetTagIDs(int $ID): array
     {
-       return parent::GetTagIDs($ID);
+        return parent::GetTagIDs($ID);
     }
 
     /**
@@ -109,11 +112,11 @@ class XHtmlOptions extends \DOTNET {
      * PDF page as a result of that call.The locations match up directly on a one-to-one basis with the
      * IDs returned by the GetTagIDs method. 
      * @param int $ID The Object ID of the object.
-     * @return Array of XRects The location of tagged visible HTML objects.
+     * @return array The location of tagged visible HTML objects.
      */
-    public function GetTagRects(int $ID): Array of XRects
+    public function GetTagRects(int $ID): array
     {
-       return parent::GetTagRects($ID);
+        return parent::GetTagRects($ID);
     }
 
     /**
@@ -132,7 +135,7 @@ class XHtmlOptions extends \DOTNET {
      */
     public function LinkPages(): void
     {
-       parent::LinkPages();
+        parent::LinkPages();
     }
 
     /**
@@ -142,7 +145,7 @@ class XHtmlOptions extends \DOTNET {
      */
     public function PageCacheClear(): void
     {
-       parent::PageCacheClear();
+        parent::PageCacheClear();
     }
 
     /**
@@ -152,6 +155,6 @@ class XHtmlOptions extends \DOTNET {
      */
     public function PageCachePurge(): void
     {
-       parent::PageCachePurge();
+        parent::PageCachePurge();
     }
 }

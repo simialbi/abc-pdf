@@ -2,6 +2,8 @@
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property-read XBookmark $Bookmark The top-level bookmark for the document.
@@ -34,14 +36,15 @@ namespace ABCPdf;
  * @property float $VPos The current vertical positioning.
  * @property float $Width The current line width.
  */
-class Doc extends \DOTNET {
+class Doc extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
+        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int $codepage = CP_ACP
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -66,7 +69,7 @@ class Doc extends \DOTNET {
      */
     public function AddArc(float $AngleStart, float $AngleEnd, float $CenterX, float $CenterY, float $RadiusX, float $RadiusY, bool $Filled = null): int
     {
-       return parent::AddArc($AngleStart, $AngleEnd, $CenterX, $CenterY, $RadiusX, $RadiusY, $Filled);
+        return parent::AddArc($AngleStart, $AngleEnd, $CenterX, $CenterY, $RadiusX, $RadiusY, $Filled);
     }
 
     /**
@@ -83,7 +86,7 @@ class Doc extends \DOTNET {
      */
     public function AddBookmark(string $Path, bool $Open): int
     {
-       return parent::AddBookmark($Path, $Open);
+        return parent::AddBookmark($Path, $Open);
     }
 
     /**
@@ -105,7 +108,7 @@ class Doc extends \DOTNET {
      */
     public function AddColorSpaceFile(string $Path): int
     {
-       return parent::AddColorSpaceFile($Path);
+        return parent::AddColorSpaceFile($Path);
     }
 
     /**
@@ -134,7 +137,7 @@ class Doc extends \DOTNET {
      */
     public function AddColorSpaceSpot(string $Name, string $Color): int
     {
-       return parent::AddColorSpaceSpot($Name, $Color);
+        return parent::AddColorSpaceSpot($Name, $Color);
     }
 
     /**
@@ -169,7 +172,7 @@ class Doc extends \DOTNET {
      */
     public function AddFont(string $FontName, string $Language = null, bool $Vertical = null): int
     {
-       return parent::AddFont($FontName, $Language, $Vertical);
+        return parent::AddFont($FontName, $Language, $Vertical);
     }
 
     /**
@@ -180,7 +183,7 @@ class Doc extends \DOTNET {
      */
     public function AddGrid(): int
     {
-       return parent::AddGrid();
+        return parent::AddGrid();
     }
 
     /**
@@ -214,7 +217,7 @@ class Doc extends \DOTNET {
      */
     public function AddHtml(string $Text, int $ChainID = null): int
     {
-       return parent::AddHtml($Text, $ChainID);
+        return parent::AddHtml($Text, $ChainID);
     }
 
     /**
@@ -234,7 +237,7 @@ class Doc extends \DOTNET {
      */
     public function AddImage(mixed $ImageSpec, int $Frame = null, string $SrcRect = null): int
     {
-       return parent::AddImage($ImageSpec, $Frame, $SrcRect);
+        return parent::AddImage($ImageSpec, $Frame, $SrcRect);
     }
 
     /**
@@ -257,7 +260,7 @@ class Doc extends \DOTNET {
      */
     public function AddImageCopy(int $ID): int
     {
-       return parent::AddImageCopy($ID);
+        return parent::AddImageCopy($ID);
     }
 
     /**
@@ -273,7 +276,7 @@ class Doc extends \DOTNET {
      */
     public function AddImageData(array $Data, int $Frame): int
     {
-       return parent::AddImageData($Data, $Frame);
+        return parent::AddImageData($Data, $Frame);
     }
 
     /**
@@ -298,7 +301,7 @@ class Doc extends \DOTNET {
      */
     public function AddImageDoc(Doc $Source, int $Page, string $SrcRect): int
     {
-       return parent::AddImageDoc($Source, $Page, $SrcRect);
+        return parent::AddImageDoc($Source, $Page, $SrcRect);
     }
 
     /**
@@ -326,14 +329,14 @@ class Doc extends \DOTNET {
      * "/SMask/Decode", "[1 0]"A similar technique can be used for inverting or altering
      * color levels on the image itself.To invert an RGB image:theDoc.SetInfo theDoc.GetInfo(theID, "XObject"),
      * "/Decode", "[1 0 1 0 1 0]" 
-     * @param  $Path 
+     * @param  $Path
      * @param int $Frame Some image formats support multiple frames or pages. The first
      * frame is frame one.
      * @return int The Object ID of the newly added Image object.
      */
     public function AddImageFile($Path, int $Frame): int
     {
-       return parent::AddImageFile($Path, $Frame);
+        return parent::AddImageFile($Path, $Frame);
     }
 
     /**
@@ -365,7 +368,7 @@ class Doc extends \DOTNET {
      */
     public function AddImageHtml(string $Html, bool $Paged = null, int $Width = null, bool $DisableCache = null): int
     {
-       return parent::AddImageHtml($Html, $Paged, $Width, $DisableCache);
+        return parent::AddImageHtml($Html, $Paged, $Width, $DisableCache);
     }
 
     /**
@@ -394,7 +397,7 @@ class Doc extends \DOTNET {
      */
     public function AddImageObject(XImage $Image, bool $Transparent): int
     {
-       return parent::AddImageObject($Image, $Transparent);
+        return parent::AddImageObject($Image, $Transparent);
     }
 
     /**
@@ -419,7 +422,7 @@ class Doc extends \DOTNET {
      */
     public function AddImageToChain(int $ID): int
     {
-       return parent::AddImageToChain($ID);
+        return parent::AddImageToChain($ID);
     }
 
     /**
@@ -457,7 +460,7 @@ class Doc extends \DOTNET {
      */
     public function AddImageUrl(string $Url, bool $Paged = null, int $Width = null, bool $DisableCache = null): int
     {
-       return parent::AddImageUrl($Url, $Paged, $Width, $DisableCache);
+        return parent::AddImageUrl($Url, $Paged, $Width, $DisableCache);
     }
 
     /**
@@ -473,7 +476,7 @@ class Doc extends \DOTNET {
      */
     public function AddLine(float $X1, float $Y1, float $X2, float $Y2): int
     {
-       return parent::AddLine($X1, $Y1, $X2, $Y2);
+        return parent::AddLine($X1, $Y1, $X2, $Y2);
     }
 
     /**
@@ -490,7 +493,7 @@ class Doc extends \DOTNET {
      */
     public function AddObject(string $Text): int
     {
-       return parent::AddObject($Text);
+        return parent::AddObject($Text);
     }
 
     /**
@@ -505,7 +508,7 @@ class Doc extends \DOTNET {
      */
     public function AddOval(bool $Filled): int
     {
-       return parent::AddOval($Filled);
+        return parent::AddOval($Filled);
     }
 
     /**
@@ -521,7 +524,7 @@ class Doc extends \DOTNET {
      */
     public function AddPage(int $PageNum): int
     {
-       return parent::AddPage($PageNum);
+        return parent::AddPage($PageNum);
     }
 
     /**
@@ -542,7 +545,7 @@ class Doc extends \DOTNET {
      */
     public function AddPie(float $AngleStart, float $AngleEnd, bool $Filled): int
     {
-       return parent::AddPie($AngleStart, $AngleEnd, $Filled);
+        return parent::AddPie($AngleStart, $AngleEnd, $Filled);
     }
 
     /**
@@ -562,7 +565,7 @@ class Doc extends \DOTNET {
      */
     public function AddPoly(string $Points, bool $Filled): int
     {
-       return parent::AddPoly($Points, $Filled);
+        return parent::AddPoly($Points, $Filled);
     }
 
     /**
@@ -599,7 +602,7 @@ class Doc extends \DOTNET {
      */
     public function AddText(string $Text): int
     {
-       return parent::AddText($Text);
+        return parent::AddText($Text);
     }
 
     /**
@@ -611,7 +614,7 @@ class Doc extends \DOTNET {
      */
     public function Append(Doc $Doc): void
     {
-       parent::Append($Doc);
+        parent::Append($Doc);
     }
 
     /**
@@ -627,7 +630,7 @@ class Doc extends \DOTNET {
      */
     public function Chainable(int $ID): bool
     {
-       return parent::Chainable($ID);
+        return parent::Chainable($ID);
     }
 
     /**
@@ -636,7 +639,7 @@ class Doc extends \DOTNET {
      */
     public function Clear(): void
     {
-       parent::Clear();
+        parent::Clear();
     }
 
     /**
@@ -647,7 +650,7 @@ class Doc extends \DOTNET {
      */
     public function Delete(int $ID): void
     {
-       parent::Delete($ID);
+        parent::Delete($ID);
     }
 
     /**
@@ -693,7 +696,7 @@ class Doc extends \DOTNET {
      */
     public function EmbedFont(string $FontName, string $Language = null, bool $Vertical = null, bool $Subset = null, bool $Force = null): int
     {
-       return parent::EmbedFont($FontName, $Language, $Vertical, $Subset, $Force);
+        return parent::EmbedFont($FontName, $Language, $Vertical, $Subset, $Force);
     }
 
     /**
@@ -712,7 +715,7 @@ class Doc extends \DOTNET {
      */
     public function FillRect(float $RadiusX, float $RadiusY): int
     {
-       return parent::FillRect($RadiusX, $RadiusY);
+        return parent::FillRect($RadiusX, $RadiusY);
     }
 
     /**
@@ -729,7 +732,7 @@ class Doc extends \DOTNET {
      */
     public function Flatten(): int
     {
-       return parent::Flatten();
+        return parent::Flatten();
     }
 
     /**
@@ -754,7 +757,7 @@ class Doc extends \DOTNET {
      */
     public function FrameRect(float $RadiusX, float $RadiusY = null, bool $Inside = null): int
     {
-       return parent::FrameRect($RadiusX, $RadiusY, $Inside);
+        return parent::FrameRect($RadiusX, $RadiusY, $Inside);
     }
 
     /**
@@ -794,7 +797,7 @@ class Doc extends \DOTNET {
      */
     public function GetData(): array
     {
-       return parent::GetData();
+        return parent::GetData();
     }
 
     /**
@@ -817,7 +820,7 @@ class Doc extends \DOTNET {
      */
     public function GetInfo(int $ID, string $Type): string
     {
-       return parent::GetInfo($ID, $Type);
+        return parent::GetInfo($ID, $Type);
     }
 
     /**
@@ -888,7 +891,7 @@ class Doc extends \DOTNET {
      */
     public function GetText(string $Type): string
     {
-       return parent::GetText($Type);
+        return parent::GetText($Type);
     }
 
     /**
@@ -928,7 +931,7 @@ class Doc extends \DOTNET {
      */
     public function Read(array|string $PathOrData, string $Password = null): void
     {
-       parent::Read($PathOrData, $Password);
+        parent::Read($PathOrData, $Password);
     }
 
     /**
@@ -943,7 +946,7 @@ class Doc extends \DOTNET {
      */
     public function RemapPages(string $Pages): void
     {
-       parent::RemapPages($Pages);
+        parent::RemapPages($Pages);
     }
 
     /**
@@ -971,7 +974,7 @@ class Doc extends \DOTNET {
      */
     public function Save(string $Path): void
     {
-       parent::Save($Path);
+        parent::Save($Path);
     }
 
     /**
@@ -986,6 +989,6 @@ class Doc extends \DOTNET {
      */
     public function SetInfo(int $ID, string $Type, string $Value): void
     {
-       parent::SetInfo($ID, $Type, $Value);
+        parent::SetInfo($ID, $Type, $Value);
     }
 }
