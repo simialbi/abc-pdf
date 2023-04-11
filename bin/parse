@@ -52,7 +52,7 @@ while (false !== ($class = readdir($dh))) {
                         $tmp[$param] = [
                             'required' => true
                         ];
-                        if (isset($params[$i - 1]) && str_ends_with($params[$i - 1], '[')) {
+                        if ((isset($params[$i - 1]) && str_ends_with($params[$i - 1], '[')) || ($i === 0 && str_starts_with($params[$i], '['))) {
                             $tmp[$param] = [
                                 'required' => false
                             ];

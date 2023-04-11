@@ -522,7 +522,7 @@ class Doc extends DOTNET
      * By default, pages are added at the end of the document.
      * @return int The Object ID of the newly added Page object.
      */
-    public function AddPage(int $PageNum): int
+    public function AddPage(int $PageNum = null): int
     {
         return parent::AddPage($PageNum);
     }
@@ -713,7 +713,7 @@ class Doc extends DOTNET
      * @param float $RadiusY The vertical radius to use for rounded corners (optional).
      * @return int The Object ID of the newly added Graphic object.
      */
-    public function FillRect(float $RadiusX, float $RadiusY): int
+    public function FillRect(float $RadiusX = null, float $RadiusY): int
     {
         return parent::FillRect($RadiusX, $RadiusY);
     }
@@ -755,7 +755,7 @@ class Doc extends DOTNET
      * @param bool $Inside Whether to draw the frame inside the rectangle (optional).
      * @return int The Object ID of the newly added Graphic object.
      */
-    public function FrameRect(float $RadiusX, float $RadiusY = null, bool $Inside = null): int
+    public function FrameRect(float $RadiusX = null, float $RadiusY = null, bool $Inside = null): int
     {
         return parent::FrameRect($RadiusX, $RadiusY, $Inside);
     }

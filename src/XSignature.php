@@ -144,7 +144,7 @@ class XSignature extends DOTNET
      * @param  $Certificates
      * @return bool Whether the signature is valid.
      */
-    public function Validate($Certificates): bool
+    public function Validate($Certificates = null): bool
     {
         return parent::Validate($Certificates);
     }
