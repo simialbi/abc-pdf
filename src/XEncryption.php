@@ -29,7 +29,7 @@ class XEncryption extends DOTNET
     public function __construct(
         string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.XEncryption',
-        int    $codepage = CP_ACP
+        int $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -41,9 +41,9 @@ class XEncryption extends DOTNET
      * per document (i.e. stringMethod≠streamMethod).
      * However, Identity is degenerate and can be used with other crypt methods. 
      * @param int $StringMethod The crypt method for strings. It is also for streams if StreamMethod is missing.
-     * @param int $StreamMethod The crypt method for streams (optional).
+     * @param int|null $StreamMethod The crypt method for streams (optional).
      */
-    public function SetCryptMethods(int $StringMethod, int $StreamMethod = null): void
+    public function SetCryptMethods(int $StringMethod, int|null $StreamMethod = null): void
     {
         parent::SetCryptMethods($StringMethod, $StreamMethod);
     }

@@ -44,9 +44,8 @@ class Doc extends DOTNET
     public function __construct(
         string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.Doc',
-        int    $codepage = CP_ACP
-    )
-    {
+        int $codepage = CP_ACP
+    ) {
         parent::__construct($assembly_name, $datatype_name, $codepage);
     }
 
@@ -64,11 +63,18 @@ class Doc extends DOTNET
      * @param float $CenterY The vertical coordinate of the center of the arc.
      * @param float $RadiusX The horizontal radius of the arc.
      * @param float $RadiusY The vertical radius of the arc.
-     * @param bool $Filled Whether to fill the arc rather than simply drawing it (optional).
+     * @param bool|null $Filled Whether to fill the arc rather than simply drawing it (optional).
      * @return int The Object ID of the newly added Graphic object.
      */
-    public function AddArc(float $AngleStart, float $AngleEnd, float $CenterX, float $CenterY, float $RadiusX, float $RadiusY, bool $Filled = null): int
-    {
+    public function AddArc(
+        float $AngleStart,
+        float $AngleEnd,
+        float $CenterX,
+        float $CenterY,
+        float $RadiusX,
+        float $RadiusY,
+        bool|null $Filled = null
+    ): int {
         return parent::AddArc($AngleStart, $AngleEnd, $CenterX, $CenterY, $RadiusX, $RadiusY, $Filled);
     }
 
@@ -160,17 +166,17 @@ class Doc extends DOTNET
      * should not move, rename or delete a font file which has been dynamically
      * loaded using this technique. 
      * @param string $FontName The name of the font typeface.
-     * @param string $Language The language type to use (optional).
+     * @param string|null $Language The language type to use (optional).
      * See the Fonts and
      * Languages section for details on language types. The default
      * language type is Latin.
-     * @param bool $Vertical Whether the text direction should be vertical (optional).
+     * @param bool|null $Vertical Whether the text direction should be vertical (optional).
      * See the Fonts and
      * Languages section for details on writing directions. The
      * default is false to indicate standard left-to-right layout.
      * @return int The Object ID of the newly added Font object.
      */
-    public function AddFont(string $FontName, string $Language = null, bool $Vertical = null): int
+    public function AddFont(string $FontName, string|null $Language = null, bool|null $Vertical = null): int
     {
         return parent::AddFont($FontName, $Language, $Vertical);
     }
@@ -211,11 +217,11 @@ class Doc extends DOTNET
      * create trees of HTML blocks, flowing text from a chain head through
      * multiple display areas on your document. 
      * @param string $Text The HTML to be added to the page.
-     * @param int $ChainID The Object ID of a previously added text block. If this parameter
+     * @param int|null $ChainID The Object ID of a previously added text block. If this parameter
      * is supplied, then the contents of the Text parameter are ignored.
      * @return int The Object ID of the newly added Text object.
      */
-    public function AddHtml(string $Text, int $ChainID = null): int
+    public function AddHtml(string $Text, int|null $ChainID = null): int
     {
         return parent::AddHtml($Text, $ChainID);
     }
@@ -226,16 +232,16 @@ class Doc extends DOTNET
      * the following methods to call dependent on the content of the ImageSpec.This method is provided for backward compatibility. You should call
      * the appropriate method directly rather than working via this method. 
      * @param mixed $ImageSpec The image to be added to the page.
-     * @param int $Frame Some image formats support multiple frames or pages. You can
+     * @param int|null $Frame Some image formats support multiple frames or pages. You can
      * specify the frame you want added using this optional argument.
      * The default is one to indicate the first frame.
-     * @param string $SrcRect Some image formats support source rectangles. You can specify
+     * @param string|null $SrcRect Some image formats support source rectangles. You can specify
      * the portion of the image you want drawn using this optional
      * argument. The default value is the rectangle encompassing
      * the entire image.
      * @return int The ID of the newly added Image object.
      */
-    public function AddImage(mixed $ImageSpec, int $Frame = null, string $SrcRect = null): int
+    public function AddImage(mixed $ImageSpec, int|null $Frame = null, string|null $SrcRect = null): int
     {
         return parent::AddImage($ImageSpec, $Frame, $SrcRect);
     }
@@ -357,17 +363,21 @@ class Doc extends DOTNET
      * save your HTML to file in an appropriate location and then
      * use AddImageUrl. 
      * @param string $Html The HTML to be rendered.
-     * @param bool $Paged Allows you to override the default XHtmlOptions.Paged
+     * @param bool|null $Paged Allows you to override the default XHtmlOptions.Paged
      * property (optional).
-     * @param int $Width Allows you to override the default
+     * @param int|null $Width Allows you to override the default
      * XHtmlOptions.BrowserWidth property (optional).
-     * @param bool $DisableCache Allows you to override and disable the page cache (optional).
+     * @param bool|null $DisableCache Allows you to override and disable the page cache (optional).
      * See the XHtmlOptions.PageCacheEnabled
      * property for details.
      * @return int The ID of the newly added View object.
      */
-    public function AddImageHtml(string $Html, bool $Paged = null, int $Width = null, bool $DisableCache = null): int
-    {
+    public function AddImageHtml(
+        string $Html,
+        bool|null $Paged = null,
+        int|null $Width = null,
+        bool|null $DisableCache = null
+    ): int {
         return parent::AddImageHtml($Html, $Paged, $Width, $DisableCache);
     }
 
@@ -449,17 +459,21 @@ class Doc extends DOTNET
      * which is happening either in IIS/ASP or on an intervening
      * proxy server or on the client. 
      * @param string $Url The URL for the page to be rendered.
-     * @param bool $Paged Allows you to override the default XHtmlOptions.Paged
+     * @param bool|null $Paged Allows you to override the default XHtmlOptions.Paged
      * property (optional).
-     * @param int $Width Allows you to override the default
+     * @param int|null $Width Allows you to override the default
      * XHtmlOptions.BrowserWidth property (optional).
-     * @param bool $DisableCache Allows you to override and disable the page cache (optional).
+     * @param bool|null $DisableCache Allows you to override and disable the page cache (optional).
      * See the XHtmlOptions.PageCacheEnabled
      * property for details.
      * @return int The ID of the newly added View object.
      */
-    public function AddImageUrl(string $Url, bool $Paged = null, int $Width = null, bool $DisableCache = null): int
-    {
+    public function AddImageUrl(
+        string $Url,
+        bool|null $Paged = null,
+        int|null $Width = null,
+        bool|null $DisableCache = null
+    ): int {
         return parent::AddImageUrl($Url, $Paged, $Width, $DisableCache);
     }
 
@@ -518,11 +532,11 @@ class Doc extends DOTNET
      * the PageNum parameter to insert pages at other locations. The following
      * code inserts a page at the start of a document.theDoc.Page = theDoc.AddPage(1)Any existing page and all subsequent pages will be shifted towards
      * the end of the document to make room for the insertion. 
-     * @param int $PageNum The page insertion location (optional).
+     * @param int|null $PageNum The page insertion location (optional).
      * By default, pages are added at the end of the document.
      * @return int The Object ID of the newly added Page object.
      */
-    public function AddPage(int $PageNum = null): int
+    public function AddPage(int|null $PageNum = null): int
     {
         return parent::AddPage($PageNum);
     }
@@ -674,19 +688,19 @@ class Doc extends DOTNET
      * should not move, rename or delete a font file which has been dynamically
      * loaded using this technique. 
      * @param string $FontName The name of the font typeface.
-     * @param string $Language The language type to use (optional).
+     * @param string|null $Language The language type to use (optional).
      * See the Fonts and
      * Languages section for details on language types. The default
      * language type is Latin.
-     * @param bool $Vertical Whether the text direction should be vertical (optional).
+     * @param bool|null $Vertical Whether the text direction should be vertical (optional).
      * See the Fonts and
      * Languages section for details on writing directions. The
      * default is false to indicate standard left-to-right layout.
-     * @param bool $Subset Whether to subset the font (optional).
+     * @param bool|null $Subset Whether to subset the font (optional).
      * See the Fonts and
      * Languages section for details on subsetting. The default
      * is false to indicate that the font should not be subsetted.
-     * @param bool $Force Whether to override permissions on the font (optional).
+     * @param bool|null $Force Whether to override permissions on the font (optional).
      * Fonts often contain embedded licensing information. By default,
      * ABCpdf will prevent you from embedding fonts which indicate
      * that embedding is not permitted.
@@ -694,8 +708,13 @@ class Doc extends DOTNET
      * this value.
      * @return int The Object ID of the newly added Font object.
      */
-    public function EmbedFont(string $FontName, string $Language = null, bool $Vertical = null, bool $Subset = null, bool $Force = null): int
-    {
+    public function EmbedFont(
+        string $FontName,
+        string|null $Language = null,
+        bool|null $Vertical = null,
+        bool|null $Subset = null,
+        bool|null $Force = null
+    ): int {
         return parent::EmbedFont($FontName, $Language, $Vertical, $Subset, $Force);
     }
 
@@ -709,11 +728,11 @@ class Doc extends DOTNET
      * the rect and the vertical radius parameter to half the height of
      * the rect, you can draw filled ovals and circles.The FillRect method returns the Object ID of the newly added
      * Graphic object. 
-     * @param float $RadiusX The horizontal radius to use for rounded corners (optional).
-     * @param float $RadiusY The vertical radius to use for rounded corners (optional).
+     * @param float|null $RadiusX The horizontal radius to use for rounded corners (optional).
+     * @param float|null $RadiusY The vertical radius to use for rounded corners (optional).
      * @return int The Object ID of the newly added Graphic object.
      */
-    public function FillRect(float $RadiusX = null, float $RadiusY): int
+    public function FillRect(float|null $RadiusX = null, float|null $RadiusY = null): int
     {
         return parent::FillRect($RadiusX, $RadiusY);
     }
@@ -750,12 +769,12 @@ class Doc extends DOTNET
      * wish to draw the frame round the inside of the rectangle. You can
      * do this by setting the Inside parameter to true.The FrameRect method returns the Object ID of the newly added
      * Graphic object. 
-     * @param float $RadiusX The horizontal radius to use for rounded corners (optional).
-     * @param float $RadiusY The vertical radius to use for rounded corners (optional).
-     * @param bool $Inside Whether to draw the frame inside the rectangle (optional).
+     * @param float|null $RadiusX The horizontal radius to use for rounded corners (optional).
+     * @param float|null $RadiusY The vertical radius to use for rounded corners (optional).
+     * @param bool|null $Inside Whether to draw the frame inside the rectangle (optional).
      * @return int The Object ID of the newly added Graphic object.
      */
-    public function FrameRect(float $RadiusX = null, float $RadiusY = null, bool $Inside = null): int
+    public function FrameRect(float|null $RadiusX = null, float|null $RadiusY = null, bool|null $Inside = null): int
     {
         return parent::FrameRect($RadiusX, $RadiusY, $Inside);
     }
@@ -927,9 +946,9 @@ class Doc extends DOTNET
      * box over existing content and then draw on that.However, you shouldn't expect to be able to edit and re-flow
      * text that is already in your PDF. 
      * @param array|string $PathOrData The source file path or the source data.
-     * @param string $Password Any password needed to open the document.
+     * @param string|null $Password Any password needed to open the document.
      */
-    public function Read(array|string $PathOrData, string $Password = null): void
+    public function Read(array|string $PathOrData, string|null $Password = null): void
     {
         parent::Read($PathOrData, $Password);
     }

@@ -27,9 +27,8 @@ class XSignature extends DOTNET
     public function __construct(
         string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.XSignature',
-        int    $codepage = CP_ACP
-    )
-    {
+        int $codepage = CP_ACP
+    ) {
         parent::__construct($assembly_name, $datatype_name, $codepage);
     }
 
@@ -141,10 +140,10 @@ class XSignature extends DOTNET
      * accessed by using
      * System.Security.Cryptography.X509Certificates.X509Store
      * (in .NET BCL). 
-     * @param  $Certificates
+     * @param mixed $Certificates
      * @return bool Whether the signature is valid.
      */
-    public function Validate($Certificates = null): bool
+    public function Validate(mixed $Certificates = null): bool
     {
         return parent::Validate($Certificates);
     }

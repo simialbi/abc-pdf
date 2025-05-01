@@ -52,7 +52,7 @@ while (false !== ($class = readdir($dh))) {
                         $tmp[$param] = [
                             'required' => true
                         ];
-                        if ((isset($params[$i - 1]) && str_ends_with($params[$i - 1], '[')) || ($i === 0 && str_starts_with($params[$i], '['))) {
+                        if (str_starts_with(trim($params[$i]), '[') || str_ends_with($params[$i - 1] ?? '', '[')) {
                             $tmp[$param] = [
                                 'required' => false
                             ];
@@ -174,15 +174,18 @@ while (false !== ($class = readdir($dh))) {
 
 namespace ABCPdf;
 
+use DOTNET;
+
 /**
 $properties
  */
-class $class extends \DOTNET {
+class $class extends DOTNET
+{
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string \$assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169', 
+        string \$assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string \$datatype_name = 'WebSupergoo.ABCpdf12.$class',
         int \$codepage = CP_ACP
     )
@@ -201,7 +204,7 @@ PHP;
         }
         foreach ($method['params'] as $name => $param) {
             $desc = str_replace("\n", "\n     * ", $param['desc']);
-            $file .= "     * @param {$param['type']} \$$name $desc\n";
+            $file .= "     * @param {$param['type']}" . ($param['required'] ? '' : (empty($param['type']) ? 'mixed' : '|null')) . " \$$name $desc\n";
         }
         if (!empty($method['return']['name'])) {
             $file .= "     * @return {$method['return']['type']} {$method['return']['desc']}\n";
@@ -209,9 +212,16 @@ PHP;
         $file .= "     */\n    public function {$method['name']}(";
         foreach ($method['params'] as $name => $param) {
             if (!empty($param['type'])) {
-                $file .= $param['type'] . ' ';
+                $file .= $param['type'];
             }
-            $file .= "\$$name";
+            if (!$param['required']) {
+                if (empty($param['type'])) {
+                    $file .= 'mixed';
+                } else {
+                    $file .= '|null';
+                }
+            }
+            $file .= " \$$name";
             if (!$param['required']) {
                 $file .= ' = null';
             }

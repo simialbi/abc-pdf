@@ -5,6 +5,7 @@ namespace ABCPdf;
 use DOTNET;
 
 /**
+
  */
 class ComFactory extends DOTNET
 {
@@ -14,7 +15,7 @@ class ComFactory extends DOTNET
     public function __construct(
         string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.ComFactory',
-        int    $codepage = CP_ACP
+        int $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
