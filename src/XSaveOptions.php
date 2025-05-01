@@ -2,8 +2,6 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property string $FileExtension Gets or sets the file extension for the target when it is not otherwise specified.
@@ -16,7 +14,7 @@ use DOTNET;
  * @property string $Template The path to the template file.
  * @property XSaveTemplateData $TemplateData The template data.
  */
-class XSaveOptions extends DOTNET
+class XSaveOptions extends \DOTNET
 {
     /**
      * {@inheritDoc}

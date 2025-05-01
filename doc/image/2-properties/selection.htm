@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>Selection Property</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">Selection Property</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>&nbsp;</p>
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Type</b></td>
+                <td><b>Default Value</b></td>
+                <td><b>Read Only</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center"><a href="../../xrect/default.htm">XRect</a></td>
+                <td>The dimensions of the current frame.</td>
+                <td>Yes</td>
+                <td>The current selection rectangle.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>You may wish to add only a portion of an image. By changing the
+              selection rectangle, you can specify different areas to be added.</p>
+            <p>Note that this property only has an effect on an Image if the <a href="indirect.htm">Indirect</a>
+              property is true (which is generally the case).</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>Here, we open a TIFF file using the Image object. We add the entire
+              image to the document and then just a portion of the image using the
+              Selection property.</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              Set theImg = Server.CreateObject(&quot;ABCpdf12.Image&quot;)<br>
+              theImg.SetFile &quot;c:\mypics\mypic.tif&quot;<br>
+              theDoc.Rect = theImg.Selection<br>
+              theDoc.Rect.Magnify 0.5, 0.5<br>
+              theDoc.Rect.Position 100, 30<br>
+              theDoc.AddImageObject theImg, False<br>
+              theImg.Selection.Inset 100, 200<br>
+              theDoc.Rect = theImg.Selection<br>
+              theDoc.Rect.Position 170, 400<br>
+              theDoc.AddImageObject theImg, False<br>
+              theDoc.Save &quot;c:\mypdfs\imageselect.pdf&quot;</code></p>
+            <p><img src="../../../images/pdf/imageselect.pdf.gif" width="200" height="259"><br>
+              imageselect.pdf</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

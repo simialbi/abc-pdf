@@ -2,8 +2,6 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property-read string $Format The field format.
@@ -19,7 +17,7 @@ use DOTNET;
  * @property-read string $Type The field type.
  * @property string $Value The field value.
  */
-class XField extends DOTNET
+class XField extends \DOTNET
 {
     /**
      * {@inheritDoc}
@@ -34,11 +32,10 @@ class XField extends DOTNET
     }
 
     /**
-     * Use this method to permanently stamp a field into the document.When this method is called, the field appearance is stamped permanently
-     * into the document and the field is deleted.The field becomes a new layer on the page (see Doc.LayerCount)
-     * so you may wish to call Doc.Flatten
-     * on the affected page.You can use the XForm.Stamp
-     * method to stamp all fields into the document. 
+     * Use this method to permanently stamp a field into the document.When this method is called, the field appearance
+     * is stamped permanently into the document and the field is deleted.The field becomes a new layer on the page (see
+     * Doc.LayerCount) so you may wish to call Doc.Flatten on the affected page.You can use the XForm.Stamp method to
+     * stamp all fields into the document.
      */
     public function Stamp(): void
     {

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>SetCryptMethods Method</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><LINK
+href="../../../mystyles.css" rel=stylesheet>
+<META content="MSHTML 6.00.6000.16809" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<TABLE cellSpacing=4 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top><IMG height=60 src="../../../images/goo.gif" width=58></TD>
+    <TD width=14>&nbsp;</TD>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=pageheader>SetCryptMethods Method</TD>
+          <TD width=60>&nbsp;</TD>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD background=../../../images/steel-line-3.gif height=11></TD>
+          <TD width=60 background=../../../images/steel-line-3.gif
+          height=11></TD>
+          <TD height=11><IMG height=11 src="../../../images/steel-blob-11.gif"
+            width=11></TD></TR>
+        <TR>
+          <TD>
+            <P>Sets the crypt methods for encryption levels of <A href="../2-properties/type.htm">type</A> 4 or above.</P>
+            <P>&nbsp;</P></TD>
+          <TD width=60>&nbsp;</TD>
+          <TD>&nbsp;</TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=sectheader vAlign=top><IMG height=10 src="../../../images/steel-pin.gif" width=64><BR>Syntax</TD>
+    <TD width=14>&nbsp;</TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top>
+            <p><code>XEncryption.SetCryptMethods(StringMethod [, StreamMethod])</code></p>
+            <P>&nbsp;</P></TD>
+          <TD width=60>&nbsp;</TD>
+          <TD width=11>&nbsp;</TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=sectheader vAlign=top><IMG height=10
+      src="../../../images/steel-pin.gif" width=64><BR>Params</TD>
+    <TD width=14>&nbsp;</TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top>
+            <TABLE class=wsgtable borderColor=#ffffff cellSpacing=0 cellPadding=3 border=5>
+              <TBODY>
+              <tr> 
+                <td align="center"><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top"> 
+                <td align="center">StringMethod</td>
+                <td>Long</td>
+                <td>The crypt method for strings. It is also for streams if StreamMethod is missing.</td>
+              </tr>
+              <tr valign="top"> 
+                <td align="center">StreamMethod</td>
+                <td>Long</td>
+                <td>The crypt method for streams (optional).</td>
+              </tr>
+              </TBODY>
+            </TABLE>
+            <P>&nbsp;</P></TD>
+          <TD width=60>&nbsp;</TD>
+          <TD width=11>&nbsp;</TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=sectheader vAlign=top><IMG height=10
+      src="../../../images/steel-pin.gif" width=64><BR>Notes</TD>
+    <TD width=14>&nbsp;</TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <P>The default crypt method for <A href="../2-properties/type.htm">Type</A>
+            4 is V2, which uses RC4 algorithm. Crypt method settings are in effect only when <A
+            href="../2-properties/type.htm">Type</A> is 4 or higher.</P>
+            <P>The StringMethod and StreamMethod parameters can take any of the following values:</P>
+            <UL>
+              <LI>0 [None] &ndash; (Not supported)
+              <LI>1 [Identity] &ndash; No encryption
+              <LI>2 [V2] &ndash; Uses the RC4 algorithm
+              <LI>3 [AESV2] &ndash; Uses the AES algorithm with 128-bit encryption keys
+              <LI>4 [AESV3] &ndash; Uses the AES algorithm with 256-bit encryption keys</LI>
+            </UL>
+            <P>Adobe Reader does not support using more than one crypt method
+            per document (i.e. stringMethod&ne;streamMethod).
+            However, Identity is degenerate and can be used with other crypt methods.</P>
+            <P>&nbsp;</P></TD>
+          <TD width=60>&nbsp;</TD>
+          <TD width=11>&nbsp;</TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=sectheader vAlign=top><IMG height=10
+      src="../../../images/steel-pin.gif" width=64><BR>Example</TD>
+    <TD width=14>&nbsp;</TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+			<p>Here we use 128-bit AES encryption.</p>
+			<p><code>Set theDoc = Server.CreateObject("ABCpdf12.Doc")<br>
+			theDoc.FontSize = 96<br>
+			theDoc.AddText "Hello World!"<br>
+			theDoc.Encryption.Type = 4<br>
+			theDoc.Encryption.SetCryptMethods 3<br>
+			theDoc.Save "c:\mypdfs\docencrypt.pdf"</code></p>
+			<p>&nbsp;</p>
+		  </TD>
+          <TD width=60>&nbsp;</TD>
+          <TD width=11>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P>&nbsp;</P></BODY></HTML>

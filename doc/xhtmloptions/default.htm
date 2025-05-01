@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>XHtmlOptions Object</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><link href="../../mystyles.css" rel="stylesheet">
+<meta content="MSHTML 6.00.6000.16711" name="GENERATOR"></head>
+<body bgcolor="#ffffff">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tbody>
+  <tr>
+    <td valign="top"><img src="../../images/goo.gif" height="60" width="58"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+          <td class="pageheader">XHtmlOptions Object</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td></tr>
+        <tr>
+          <td background="../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../images/steel-blob-11.gif" height="11" width="11"></td></tr>
+        <tr>
+          <td>
+            <p>Represents the current HTML rendering settings.</p>
+            <p>The properties of this object may be used to control the way that
+            the <a href="../doc/1-methods/addimageurl.htm">Doc.AddImageUrl</a>
+            and <a href="../doc/1-methods/addimagehtml.htm">Doc.AddImageHtml</a>
+            methods work.</p>
+            
+            <p>The methods of this object operate on objects added using the the
+            Doc.AddImageUrl and Doc.AddImageHtml methods. Some operations change
+            the document. Others provide information about the content which has
+            been added.</p><p>Since ABCpdf version 8 HTML documents can be imported using different HTML 
+engines. The current supported ones are the MSHTML engine (used in Microsoft 
+Internet Explorer) and a modified version of Mozilla Firefox's Gecko engine 
+tailored to work with ABCpdf. Different engines interpret HTML documents in 
+different ways and support a different set of HTML options, please see the <a href="2-properties/2-engine.htm">Engine</a> property for details.<br>&nbsp;</p></td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td></tr></tbody></table></td></tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+          <td class="sectheader">
+            <table class="wsgtable" border="5" bordercolor="#ffffff" cellpadding="3" cellspacing="0">
+              <tbody>
+              <tr>
+                <td align="center"><b>Method</b></td>
+                <td><b>Description</b></td></tr>
+              <tr valign="top">
+                <td align="center"><a href="1-methods/getscriptreturn.htm">GetScriptReturn</a></td>
+                <td>Retrieves the client side onload script return
+value.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="1-methods/gettagids.htm">GetTagIDs</a></td>
+                <td>Gets an array of the HTML IDs of tagged visible
+              items.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="1-methods/gettagrects.htm">GetTagRects</a></td>
+                <td>Gets an array of the locations of tagged visible
+              items.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="1-methods/linkpages.htm">LinkPages</a></td>
+                <td>Converts external links to internal links wherever
+                possible.</td></tr>
+              <tr valign="top">
+                <td align="center" height="23"><a href="1-methods/pagecacheclear.htm">PageCacheClear</a></td>
+                <td height="23">Clears the HTML page cache.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="1-methods/pagecachepurge.htm">PageCachePurge</a></td>
+                <td>Purges the HTML page cache.</td></tr></tbody></table>
+            <p>&nbsp;</p></td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td></tr></tbody></table></td></tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+          <td class="sectheader">
+            <table class="wsgtable" border="5" bordercolor="#ffffff" cellpadding="3" cellspacing="0">
+              <tbody>
+              <tr>
+                <td align="center"><b>Property</b></td>
+                <td align="center"><b>Default</b></td>
+                <td><b>Description</b></td></tr>
+              <tr valign="top"> 
+                <td align="center"><a href="2-properties/1-comfactory.htm">ComFactory</a></td>
+                <td align="center">No</td>
+                <td>The factory for creating objects in the same application domain.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/2-engine.htm">Engine</a></td>
+                <td align="center">No</td>
+                <td>The engine to use for HTML import operations.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/addforms.htm">AddForms</a></td>
+                <td align="center">No</td>
+                <td>Whether form fields should be live.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/addlinks.htm">AddLinks</a></td>
+                <td align="center">No</td>
+                <td>Whether hyperlinks should be live.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/addmovies.htm">AddMovies</a></td>
+                <td align="center">No</td>
+                <td>Whether active content such as movies should be 
+              added.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/addtags.htm">AddTags</a></td>
+                <td align="center">No</td>
+                <td>Whether location of certain tags should be noted.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/autotruncate.htm">AutoTruncate</a></td>
+                <td align="center">No</td>
+                <td>Whether to automatically clip redundant content at the end 
+                  of the page.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/browserwidth.htm">BrowserWidth</a></td>
+                <td align="center">No</td>
+                <td>The width of the virtual browser in pixels.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/contentcount.htm">ContentCount</a></td>
+                <td align="center">No</td>
+                <td>The minimum number of content items required for a page to 
+                  be valid.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/domarkup.htm">DoMarkup</a></td>
+                <td align="center">No</td>
+                <td>Whether HTML pages are marked up before conversion to 
+                PDF.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/fontembed.htm">FontEmbed</a></td>
+                <td align="center">No</td>
+                <td>Whether fonts should be embedded rather than 
+              referenced.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/fontprotection.htm">FontProtection</a></td>
+                <td align="center">No</td>
+                <td>Whether fonts should be protected.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/fontsubstitute.htm">FontSubstitute</a></td>
+                <td align="center">No</td>
+                <td>Whether font substitution should be used to reduce file 
+                  size.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/hidebackground.htm">HideBackground</a></td>
+                <td align="center">No</td>
+                <td>Whether to hide the background color of a page.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/hostwebbrowser.htm">HostWebBrowser</a></td>
+                <td align="center">No</td>
+                <td>Whether to host a WebBrowser control.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/httpadditionalheaders.htm">HttpAdditionalHeaders</a></td>
+                <td align="center">No</td>
+                <td>Additional HTTP headers to send in the request.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/imagequality.htm">ImageQuality</a></td>
+                <td align="center">No</td>
+                <td>The quality of compression acceptable for continuous tone 
+                  images such as JPEGs.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/logonname.htm">LogonName</a></td>
+                <td align="center">No</td>
+                <td>A user name to be used for authentication.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/logonpassword.htm">LogonPassword</a></td>
+                <td align="center">No</td>
+                <td>A password to be used for authentication.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/makefieldnamesunique.htm">MakeFieldNamesUnique</a></td>
+                <td align="center">No</td>
+                <td>Whether field names should be changed to make them unique.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/maxatomicimagesize.htm">MaxAtomicImageSize</a></td>
+                <td align="center">No</td>
+                <td>The maximum size at which an image may be regarded as
+                  atomic.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/media.htm">Media</a></td>
+                <td align="center">No</td>
+                <td>The CSS media type to use.<br></td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/nocookie.htm">NoCookie</a></td>
+                <td align="center">No</td>
+                <td>Whether to disable automatic cookies.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/onloadscript.htm">OnLoadScript</a></td>
+                <td align="center">No</td>
+                <td>A script to be run after the page is loaded.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/pagecacheenabled.htm">PageCacheEnabled</a></td>
+                <td align="center">No</td>
+                <td>Whether the page cache should be searched before rendering
+                  the page.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/pagecacheexpiry.htm">PageCacheExpiry</a></td>
+                <td align="center">No</td>
+                <td>The length of time that pages can be held in the cache 
+                  (ms).</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/pagecachesize.htm">PageCacheSize</a></td>
+                <td align="center">No</td>
+                <td>The number of pages that can be held in the cache.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/paged.htm">Paged</a></td>
+                <td align="center">No</td>
+                <td>Whether content should be rendered in multipaged 
+              format.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/pageloadmethod.htm">PageLoadMethod</a></td>
+                <td align="center">No</td>
+                <td>The method for loading URI/HTML.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/reloadpage.htm">ReloadPage</a></td>
+                <td align="center">No</td>
+                <td>Whether to reload page.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/repaintdelay.htm">RepaintDelay</a></td>
+                <td align="center">No</td>
+                <td>Minimum time to wait for the page to finish animation (ms).</td>
+              </tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/repainttimeout.htm">RepaintTimeout</a></td>
+                <td align="center">No</td>
+                <td>Maximum time to wait for the page to finish animation (ms).</td>
+              </tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/requestmethod.htm">RequestMethod</a></td>
+                <td align="center">No</td>
+                <td>The request method for URL.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/retrycount.htm">RetryCount</a></td>
+                <td align="center">No</td>
+                <td>The number of times a page should be retried if
+                  unavailable or invalid.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/targetlinks.htm">TargetLinks</a></td>
+                <td align="center">No</td>
+                <td>Whether hyperlinks should be allowed to open new windows.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/timeout.htm">Timeout</a></td>
+                <td align="center">No</td>
+                <td>The maximum amount of time allowed for obtaining a page
+                  (ms).</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/transfermodule.htm">TransferModule</a></td>
+                <td align="center">No</td>
+                <td>The module for obtaining URI/HTML data.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/useactivex.htm">UseActiveX</a></td>
+                <td align="center">No</td>
+                <td>Whether to enable ActiveX.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/usejava.htm">UseJava</a></td>
+                <td align="center">No</td>
+                <td>Whether to enable Java.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/usenocache.htm">UseNoCache</a></td>
+                <td align="center">No</td>
+                <td>Whether any proxy servers should re-request items of
+                  content.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/useresync.htm">UseResync</a></td>
+                <td align="center">No</td>
+                <td>Whether all items of content should be
+re-downloaded.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/usescript.htm">UseScript</a></td>
+                <td align="center">No</td>
+                <td>Whether to enable JavaScript and VBScript.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/usetheme.htm">UseTheme</a></td>
+                <td align="center">No</td>
+                <td>Whether to use theme or not.</td></tr>
+              <tr valign="top">
+                <td align="center"><a href="2-properties/usevideo.htm">UseVideo</a></td>
+                <td align="center">No</td>
+              <td>Whether to enable video.</td></tr></tbody></table></td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td></tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td></tr></tbody></table></td></tr></tbody></table>
+<p>&nbsp;</p></body></html>

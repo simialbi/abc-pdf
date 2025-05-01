@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>AddImageUrl Method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">AddImageUrl Method</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>Renders a web page specified by URL.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Syntax</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <p><code>ImageID = Doc.AddImageUrl(Url [, Paged[, Width[, DisableCache]]])</code></p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Params</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Url</td>
+                <td>String</td>
+                <td>The URL for the page to be rendered.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Paged</td>
+                <td>Boolean</td>
+                <td>Allows you to override the default <a href="../../xhtmloptions/2-properties/paged.htm">XHtmlOptions.Paged</a>
+                    property (optional).</td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Width</td>
+                <td>Long</td>
+                <td>Allows you to override the default<a href="../../xhtmloptions/2-properties/browserwidth.htm">
+                    XHtmlOptions.BrowserWidth</a> property (optional).</td>
+              </tr>
+              <tr valign="top">
+                <td align="center">DisableCache</td>
+                <td>Boolean</td>
+                <td>
+                  <p>Allows you to override and disable the page cache (optional).</p>
+                  <p>See the <a href="../../xhtmloptions/2-properties/pagecacheenabled.htm">XHtmlOptions.PageCacheEnabled</a>
+                    property for details.</p>
+                </td>
+              </tr>
+              <tr valign="top">
+                <td align="center">ImageID</td>
+                <td>Long</td>
+                <td>The ID of the newly added View object.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>This method adds a web page to a document.</p>
+            <p>The page is added in accordance with the current <a href="../../xhtmloptions/default.htm">XHtmlOptions</a>
+              settings. As a convenience, you can override the more commonly used
+              settings as detailed above.</p>
+            <p>Only the first page of the document is drawn. Subsequent pages
+              can be drawn using the <a href="addimagetochain.htm">AddImageToChain</a>
+              method.</p>
+            <p>The web page is scaled to fill the current <a href="../2-properties/rect.htm">Rect</a>.
+              It is transformed using the current <a href="../../xtransform/default.htm">Transform</a>.</p>
+            <table border="0" cellpadding="10" class="backgrounder">
+              <tr>
+                <td>
+                  <p><b>Caching. </b>Sometimes, you may find that pages appear
+                    to be cached.</p>
+                  <p>If you are using AddImageUrl, it is possible that the URL
+                    is in some way being cached. So the PDF may be changing, but
+                    the content within it may be staying the same. See the <a href="../../../3-concepts/g-htmlrender.htm">HTML
+                    / CSS Rendering</a> section of the documentation for details.</p>
+                  <p>Alternatively, it is possible that the PDF itself is being
+                    cached. Most commonly, this can happen if you're streaming
+                    the PDF direct to the browser and you have certain IIS settings
+                    (like Expire Content) disabled.</p>
+                  <p>Your first step should be to narrow down the problem. Why
+                    not save the PDF to disk at the same time as sending it to
+                    the client? That way you can establish whether the PDF itself
+                    is being cached or whether the content is in some way being
+                    cached (resulting in the same PDF being created again and
+                    again).</p>
+                  <p>If the PDF is being cached, you will need to look at your
+                    IIS settings. ABCpdf is not doing the caching (and indeed,
+                    it cannot cache the PDF in this way); it will be something
+                    which is happening either in IIS/ASP or on an intervening
+                    proxy server or on the client.</p>
+                </td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>We create an ABCpdf Doc object, add our URL and save. That's it!</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              theDoc.AddImageUrl &quot;http://www.google.com/&quot;<br>
+              theDoc.Save &quot;c:\mypdfs\htmlimport.pdf&quot;</code></p>
+            <p>We get the following output.</p>
+            <p><img src="../../../images/pdf/htmlimport.pdf.gif" width="300" height="388"><br>
+              htmlimport.pdf</p>
+            <p>For an example of how to use paged HTML, see the <a href="addimagetochain.htm">AddImageToChain</a>
+              method.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

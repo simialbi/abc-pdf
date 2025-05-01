@@ -2,8 +2,6 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property bool $CanAssemble Whether a user can assemble the document.
@@ -21,7 +19,7 @@ use DOTNET;
  * @property-read int $StringCryptionMethod The crypt method for strings for encryption levels of type 4 or above.
  * @property int $Type The level of encryption to use.
  */
-class XEncryption extends DOTNET
+class XEncryption extends \DOTNET
 {
     /**
      * {@inheritDoc}
@@ -37,13 +35,15 @@ class XEncryption extends DOTNET
 
     /**
      * The default crypt method for Type
-     * 4 is V2, which uses RC4 algorithm. Crypt method settings are in effect only when Type is 4 or higher.The StringMethod and StreamMethod parameters can take any of the following values:Adobe Reader does not support using more than one crypt method
-     * per document (i.e. stringMethod≠streamMethod).
-     * However, Identity is degenerate and can be used with other crypt methods. 
+     * 4 is V2, which uses RC4 algorithm. Crypt method settings are in effect only when Type is 4 or higher.The
+     * StringMethod and StreamMethod parameters can take any of the following values:Adobe Reader does not support
+     * using more than one crypt method per document (i.e. stringMethod≠streamMethod). However, Identity is degenerate
+     * and can be used with other crypt methods.
+     *
      * @param int $StringMethod The crypt method for strings. It is also for streams if StreamMethod is missing.
-     * @param int $StreamMethod The crypt method for streams (optional).
+     * @param int|null $StreamMethod The crypt method for streams (optional).
      */
-    public function SetCryptMethods(int $StringMethod, int $StreamMethod = null): void
+    public function SetCryptMethods(int $StringMethod, int|null $StreamMethod = null): void
     {
         parent::SetCryptMethods($StringMethod, $StreamMethod);
     }

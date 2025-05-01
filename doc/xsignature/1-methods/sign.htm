@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Sign Method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><link href="../../../mystyles.css" rel="stylesheet">
+<meta content="MSHTML 6.00.6000.16809" name="GENERATOR"></head>
+<body bgcolor="#ffffff">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tbody>
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" height="60" width="58"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+          <td class="pageheader">Sign Method</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td></tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" height="11" width="11"></td></tr>
+        <tr>
+          <td>
+            <p>Sign the digital signature using a private key and password.</p>
+            <p>&nbsp;</p></td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td></tr></tbody></table></td></tr>
+  <tr>
+    <td class="sectheader" valign="top"><img src="../../../images/steel-pin.gif" height="10" width="64"><br>Syntax</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+          <td valign="top">
+            <p><code>XSignature.Sign PathOrData, Password</code></p>
+            <p>&nbsp;</p></td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td></tr></tbody></table></td></tr>
+  <tr>
+    <td class="sectheader" valign="top"><img src="../../../images/steel-pin.gif" height="10" width="64"><br>Params</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+          <td valign="top">
+            <table class="wsgtable" border="5" bordercolor="#ffffff" cellpadding="3" cellspacing="0">
+              <tbody>
+              <tr>
+                <td align="center"><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Description</b></td></tr>
+              <tr valign="top">
+                <td align="center">PathOrData</td>
+                <td>String or Array of Bytes</td>
+                <td>The file path to or the data for the PFX/PKCS #12
+                (.pfx or .p12) file used for signing.</td></tr>
+              <tr valign="top">
+                <td align="center">Password</td>
+                <td>String</td>
+                <td>The password used to authorize use of the private 
+              key.</td></tr></tbody></table>
+            <p>&nbsp;</p></td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td></tr></tbody></table></td></tr>
+  <tr>
+    <td class="sectheader" valign="top"><img src="../../../images/steel-pin.gif" height="10" width="64"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+          <td>
+            <p>Use this method to sign a signature field.</p>
+            <p>In order to sign a signature, you need to use your private key. To 
+            authorize the use of this key, you need to provide your password.</p>
+            <p>Typically, this password-protected private key is held in an PFX/PKCS #12 
+            (.pfx or .p12) file. So to perform the signing operation, you provide 
+            a path to this file and a password to allow use of the private 
+            key.</p>
+            <p>Time-stamped signatures can be produced by using the service of a Time Stamping Authority (TSA).
+            See <a href="../2-properties/TimestampServiceUrl.htm">TimestampServiceUrl</a>.</p>
+            <p>If you are signing multiple signature fields in the same PDF document,
+            you should call <a href="commit.htm">Commit</a> manually after each
+            signing operation bar the last operation.</p>
+            <p>If the file is not available, if the file is invalid or if the 
+            password is incorrect, then this method will raise an error.</p>
+            <p>&nbsp;</p></td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td></tr></tbody></table></td></tr>
+  <tr>
+    <td class="sectheader" valign="top"><img src="../../../images/steel-pin.gif" height="10" width="64"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+          <td>
+            <p>Read a document and sign a signature field embedded within that 
+            document. Before signing, we specify a location and a reason why the 
+            document is being digitally signed.</p>
+            <p><code>Set theDoc = Server.CreateObject("ABCpdf12.Doc")<br>theDoc.Read
+            Server.MapPath("../Rez/Authorization.pdf")<br>Set theSig =
+            theDoc.Form("Signature")<br>theSig.Location = 
+            "Washington"<br>theSig.Reason = "Schedule 
+            Agreed"<br>theSig.Sign Server.MapPath("../Rez/JohnSmith.pfx"), 
+            "1234"<br>theDoc.Save Server.MapPath("Signed.pdf")</code></p>
+            <p>The following AddSignature method simplified from
+            InteractiveForm.AddSignature in the Annotations example project adds
+            and signs a signature.</p>
+            <p><code>Set theSig = AddSignature(theDoc, "40 100 240 150", "Signature1",
+            _<br>&nbsp;&nbsp;Server.MapPath("JohnSmith.pfx"), "1234",
+            "I am the author", "New York")</code></p>
+            <p><code>Function AddSignature(doc, fieldRect, fieldName, keyPath,
+            keyPassword, reason, location)<br>&nbsp;&nbsp;' make sure that doc.Page
+            is not zero, i.e. the current page exists, before
+            continuing<br><br>&nbsp;&nbsp;Dim eid<br>&nbsp;&nbsp;eid =
+            doc.GetInfo(doc.Root, "/AcroForm:Ref")<br>&nbsp;&nbsp;If Len(eid) &lt;= 0
+            Then eid = 0<br>&nbsp;&nbsp;If eid = 0
+            Then<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim acro<br>&nbsp;&nbsp;&nbsp;&nbsp;acro
+            = doc.GetInfo(doc.Root, "/AcroForm")<br>&nbsp;&nbsp;&nbsp;&nbsp;If acro
+            = "" Then acro = "&lt;&lt;/Fields []&gt;&gt;"<br>&nbsp;&nbsp;&nbsp;&nbsp;eid =
+            doc.AddObject(acro)<br>&nbsp;&nbsp;&nbsp;&nbsp;doc.SetInfo doc.Root,
+            "/AcroForm:Ref", eid<br>&nbsp;&nbsp;End If<br>&nbsp;&nbsp;Dim
+            font<br>&nbsp;&nbsp;font = doc.AddFont("Times-Roman")<br>&nbsp;&nbsp;doc.SetInfo
+            eid, "/DR/Font/TimesRoman:Ref", font<br><br>&nbsp;&nbsp;Dim
+            fieldId<br>&nbsp;&nbsp;fieldId = doc.AddObject("&lt;&lt;/Type /Annot /Subtype
+            /Widget /F 4 /FT /Sig /DA (/TimesRoman 0 Tf 0 g)&gt;&gt;")<br>&nbsp;&nbsp;Dim
+            sigDictId<br>&nbsp;&nbsp;sigDictId = doc.AddObject("&lt;&lt;/Filter /Adobe.PPKLite
+            /SubFilter /adbe.pkcs7.detached&gt;&gt;")<br>&nbsp;&nbsp;doc.SetInfo fieldId,
+            "/V:Ref", sigDictId<br><br>&nbsp;&nbsp;doc.SetInfo fieldId, "/T:Text",
+            fieldName<br>&nbsp;&nbsp;doc.SetInfo doc.Page, "/Annots*[]:Ref",
+            fieldId<br>&nbsp;&nbsp;doc.SetInfo fieldId, "/P:Ref",
+            doc.Page<br>&nbsp;&nbsp;doc.SetInfo eid, "/Fields*[]:Ref",
+            fieldId<br>&nbsp;&nbsp;doc.SetInfo fieldId, "/Rect:Rect",
+            fieldRect<br><br>&nbsp;&nbsp;Dim sig<br>&nbsp;&nbsp;Set sig =
+            doc.Form(fieldName)<br>&nbsp;&nbsp;sig.Sign keyPath,
+            keyPassword<br>&nbsp;&nbsp;If Len(reason) &gt; 0 Then doc.SetInfo
+            sigDictId, "/Reason:Text", reason<br>&nbsp;&nbsp;If Len(location) &gt; 0
+            Then doc.SetInfo sigDictId, "/Location:Text", location<br>&nbsp;&nbsp;If
+            Len(sig.Signer) &gt; 0 Then doc.SetInfo sigDictId, "/Name:Text",
+            sig.Signer<br><br>&nbsp;&nbsp;doc.SetInfo eid, "/SigFlags:Num",
+            "3"<br>&nbsp;&nbsp;Set AddSignature = sig<br>End Function</code></p>
+            <p>&nbsp;</p></td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td></tr></tbody></table></td></tr></tbody></table>
+<p>&nbsp;</p></body></html>

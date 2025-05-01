@@ -2,8 +2,6 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property int $Engine The engine to use for HTML import operations.
@@ -56,7 +54,7 @@ use DOTNET;
  * @property int $UseTheme Whether to use theme or not.
  * @property bool $UseVideo Whether to enable video.
  */
-class XHtmlOptions extends DOTNET
+class XHtmlOptions extends \DOTNET
 {
     /**
      * {@inheritDoc}
@@ -74,8 +72,10 @@ class XHtmlOptions extends DOTNET
      * Use this method to retrieve the client side onload script return
      * value.The ID should be obtained from a call to Doc.AddImageUrl
      * or Doc.AddImageHtml.See the OnLoadScript
-     * property for further details. 
+     * property for further details.
+     *
      * @param int $ID The Object ID of the web page to be accessed.
+     *
      * @return string The return value.
      */
     public function GetScriptReturn(int $ID): string
@@ -84,17 +84,16 @@ class XHtmlOptions extends DOTNET
     }
 
     /**
-     * Use this method to retrieve the HTML IDs of tagged visible items.To use this method, you need to enable the tagging functionality.
-     * See the AddTags property
-     * for details.This method takes an ID obtained from a call to Doc.AddImageUrl,
-     * Doc.AddImageHtml
-     * or Doc.AddImageToChain
-     * and returns the IDs of any items which are visible on the PDF page
-     * as a result of that call.For example, the ID associated with the following paragraph is "p1".<p id="p1" style="abcpdf-tag-visible: true">Gallia
-     * est omnis divisa in partes tres.<p>The IDs may be repeated if the objects are split over more than
-     * one area.The IDs match up directly on a one-to-one basis with the XRects
-     * returned by the GetTagRects method. 
+     * Use this method to retrieve the HTML IDs of tagged visible items.To use this method, you need to enable the
+     * tagging functionality. See the AddTags property for details.This method takes an ID obtained from a call to
+     * Doc.AddImageUrl, Doc.AddImageHtml or Doc.AddImageToChain and returns the IDs of any items which are visible on
+     * the PDF page as a result of that call.For example, the ID associated with the following paragraph is "p1".<p
+     * id="p1" style="abcpdf-tag-visible: true">Gallia est omnis divisa in partes tres.<p>The IDs may be repeated if
+     * the objects are split over more than one area.The IDs match up directly on a one-to-one basis with the XRects
+     * returned by the GetTagRects method.
+     *
      * @param int $ID The Object ID of the object.
+     *
      * @return array The IDs of tagged visible HTML objects.
      */
     public function GetTagIDs(int $ID): array
@@ -103,15 +102,14 @@ class XHtmlOptions extends DOTNET
     }
 
     /**
-     * Use this method to retrieve the locations of tagged visible items.To use this method, you need to enable the tagging functionality.
-     * See the AddTags property
-     * for details.This method takes an ID obtained from a call to Doc.AddImageUrl,
-     * Doc.AddImageHtml
-     * or Doc.AddImageToChain
-     * and returns the locations of any items which are visible on the
-     * PDF page as a result of that call.The locations match up directly on a one-to-one basis with the
-     * IDs returned by the GetTagIDs method. 
+     * Use this method to retrieve the locations of tagged visible items.To use this method, you need to enable the
+     * tagging functionality. See the AddTags property for details.This method takes an ID obtained from a call to
+     * Doc.AddImageUrl, Doc.AddImageHtml or Doc.AddImageToChain and returns the locations of any items which are
+     * visible on the PDF page as a result of that call.The locations match up directly on a one-to-one basis with the
+     * IDs returned by the GetTagIDs method.
+     *
      * @param int $ID The Object ID of the object.
+     *
      * @return array The location of tagged visible HTML objects.
      */
     public function GetTagRects(int $ID): array
@@ -129,9 +127,9 @@ class XHtmlOptions extends DOTNET
      * an external browser window.For example, you might add a number of web pages which contain links
      * to each other. Rather than linking to the pages on the original
      * web site, you might like to resolve the links so that they point
-     * at at the pages as they now appear in the PDF.Similarly, if you use named destinations (HTML fragments) with links
-     * within the document, you will may wish to use this method to convert
-     * them from external links to internal ones. 
+     * at at the pages as they now appear in the PDF.Similarly, if you use named destinations (HTML fragments) with
+     * links within the document, you will may wish to use this method to convert them from external links to internal
+     * ones.
      */
     public function LinkPages(): void
     {
@@ -140,8 +138,8 @@ class XHtmlOptions extends DOTNET
 
     /**
      * ABCpdf holds a cache of recently requested URLs, and it's only after
-     * five minutes or so that these pages expire from the cache.This results in a considerable degree of optimization for many
-     * common operations.You can clear the cache of all pages by calling this method. 
+     * five minutes or so that these pages expire from the cache.This results in a considerable degree of optimization
+     * for many common operations.You can clear the cache of all pages by calling this method.
      */
     public function PageCacheClear(): void
     {
@@ -150,8 +148,8 @@ class XHtmlOptions extends DOTNET
 
     /**
      * ABCpdf holds a cache of recently requested URLs, and it's only after
-     * five minutes or so that these pages expire from the cache.This results in a considerable degree of optimization for many
-     * common operations.You can clear the cache of all expired pages by calling this method. 
+     * five minutes or so that these pages expire from the cache.This results in a considerable degree of optimization
+     * for many common operations.You can clear the cache of all expired pages by calling this method.
      */
     public function PageCachePurge(): void
     {

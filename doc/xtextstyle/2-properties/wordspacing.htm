@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>WordSpacing Property</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">WordSpacing Property</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>&nbsp;</p>
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Type</b></td>
+                <td><b>Default Value</b></td>
+                <td><b>Read Only</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Double</td>
+                <td>0.0</td>
+                <td>No</td>
+                <td>The inter-word spacing.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>This property controls the spacing between each adjacent pair of words.</p>
+            <p>This property works in a similar way to the CharSpacing property,
+              but the value is added to only space characters in the string. This
+              has the effect of spacing out words or pushing them together depending
+              whether a positive or negative value is provided.</p>
+            <p>Because this property is an absolute value, the visual effect will
+              be greater if your text is smaller.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>In this example, we add three blocks of text to a document. The
+              first block uses the default spacing. The second block uses a positive
+              value to stretch out the text. The last block uses a negative value
+              to condense the text.</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              theText = &quot;This is an example of word spacing.&quot;<br>
+              theDoc.TextStyle.Size = 72<br>
+              theDoc.AddText theText<br>
+              theDoc.Rect.Move 0, -300<br>
+              theDoc.TextStyle.WordSpacing = 20<br>
+              theDoc.AddText theText<br>
+              theDoc.Rect.Move 0, -300<br>
+              theDoc.TextStyle.WordSpacing = -20<br>
+              theDoc.AddText theText<br>
+              theDoc.Save &quot;c:\mypdfs\stylewspace.pdf&quot;</code></p>
+            <p><img src="../../../images/pdf/stylewspace.pdf.gif" width="200" height="259"><br>
+              stylewspace.pdf</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>BrowserWidth Property</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">BrowserWidth Property</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>&nbsp;</p>
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Type</b></td>
+                <td><b>Default Value</b></td>
+                <td><b>Read Only</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Long</td>
+                <td>0</td>
+                <td>No</td>
+                <td>The width of the virtual browser in pixels.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>This property determines or reflects the virtual browser width
+              when rendering HTML.</p>
+            <p>HTML documents do not have a predefined width and height. The width
+              of an HTML document varies as the client resizes the browser. How
+              far the content flows down the page is dependent on the width of
+              the browser.</p>
+            <p>The Width parameter is used to control this aspect of HTML rendering.
+              It is exactly as if you were displaying your HTML in a browser window
+              the same width as the supplied value. Typical values might be 640
+              or 800.</p>
+            <p>If the Width is zero, then the web page view will default to a size
+              which shows all the available content without needing to scroll
+              from left to right. You can use this default to ensure that all
+              your HTML content is visible.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>The following example shows the effect that this parameter has
+              on PDF rendering.</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              theURL = &quot;http://www.nasa.gov/multimedia/imagegallery/image_feature_313.html&quot;<br>
+              ' Render html page with default browser width<br>
+              theDoc.AddImageUrl theURL<br>
+              ' Save the document<br>
+              theDoc.Save &quot;c:\mypdfs\HtmlOptionsBrowserWidth0.pdf&quot;<br>
+              theDoc.Clear<br>
+              ' Render html page with browser width = 300<br>
+              theDoc.HtmlOptions.BrowserWidth = 300<br>
+              theDoc.AddImageUrl theURL<br>
+              ' Save the document<br>
+              theDoc.Save &quot;c:\mypdfs\HtmlOptionsBrowserWidth300.pdf&quot;<br>
+              theDoc.Clear</code></p>
+            <p><img src="../../../images/pdf/HtmlOptionsBrowserWidth0.pdf.gif" width="300" height="388" border="1"><br>
+              HtmlOptionsBrowserWidth0.pdf</p>
+            <p><img src="../../../images/pdf/HtmlOptionsBrowserWidth300.pdf.gif" width="300" height="388" border="1"><br>
+              HtmlOptionsBrowserWidth300.pdf</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

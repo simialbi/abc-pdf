@@ -2,8 +2,6 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property bool $AntiAliasImages Whether to anti-alias images.
@@ -32,7 +30,7 @@ use DOTNET;
  * @property int $SaveQuality The output file quality for lossy compression.
  * @property bool $UseEmbeddedHalftone Whether to use embedded halftones.
  */
-class XRendering extends DOTNET
+class XRendering extends \DOTNET
 {
     /**
      * {@inheritDoc}
@@ -61,8 +59,10 @@ class XRendering extends DOTNET
      * to do this.You may wish to write such an image directly to a client browser
      * rather than going through an intermediate file. The data you obtain
      * using GetData can be written direct to an HTTP stream using Response.BinaryWrite.
-     * Similarly, you may wish to obtain raw data for insertion into a database. 
+     * Similarly, you may wish to obtain raw data for insertion into a database.
+     *
      * @param string $Name A dummy file name used to determine the type of image required.
+     *
      * @return array The image as an array of bytes.
      */
     public function GetData(string $Name): array
@@ -80,7 +80,8 @@ class XRendering extends DOTNET
      * .PNG, .BMP, .JP2, .EMF and .PS. JP2 is used for the JPEG 2000 format.
      * EMF is a vector rather than raster format, which can be useful when
      * you require resolution independence and smaller files. PS is
-     * PostScript-compatible raw vector output. 
+     * PostScript-compatible raw vector output.
+     *
      * @param string $Path The destination file path.
      */
     public function Save(string $Path): void

@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>SetMask Method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">SetMask Method</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>Assigns a soft mask to the image.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Syntax</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <p><code>Image.SetMask Mask, Invert</code></p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Params</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Mask</td>
+                <td><a href="../../image/default.htm">XImage</a></td>
+                <td>The image containing the soft mask.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Invert</td>
+                <td>Boolean</td>
+                <td>Whether to invert the mask.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top"> 
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>Assigns a soft mask or alpha channel. Soft masks are used to assign
+              levels of transparency to an image.</p>
+            <p>The mask provided will be converted to a grayscale intensity map
+              and may be scaled to ensure that the dimensions of the mask match
+              those of the image. The assigned mask applies to all frames of the
+              current image.</p>
+            <p>If the Invert parameter is set, then the mask will be inverted -
+              making transparent areas opaque and opaque areas transparent.</p>
+            <p>Different images within the mask can be accessed using the <a href="../2-properties/frame.htm">Frame</a>
+              property. Different portions of the mask can be selected using the
+              <a href="../2-properties/selection.htm">Selection</a> property.</p>
+            <p>Note that transparency is only applied to an Image if the <a href="indirect.htm">Indirect</a>
+              property is true (which is generally the case).</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>Here, we read a TIFF file and present the data to the Image object.
+              We then read a mask image and assign that to our Image. Finally,
+              we add the image to our document and then save the PDF.</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              Set theImg = Server.CreateObject(&quot;ABCpdf12.Image&quot;)<br>
+              Set theMsk = Server.CreateObject(&quot;ABCpdf12.Image&quot;)<br>
+              theImg.SetFile &quot;c:\mypics\mypic.tif&quot;<br>
+              theMsk.SetFile &quot;c:\mypics\mymask.jpg&quot;<br>
+              theImg.SetMask theMsk, True<br>
+              theMsk.Clear<br>
+              theDoc.Color = &quot;0 0 0&quot;<br>
+              theDoc.FillRect<br>
+              theDoc.Rect.Inset 20, 20<br>
+              theDoc.AddImageObject theImg, True<br>
+              theDoc.Save &quot;c:\mypdfs\imagesetmask.pdf&quot;</code></p>
+            <p>Given the following input images.</p>
+            <table width="100%" border="0" cellspacing="3" cellpadding="3">
+              <tr>
+                <td><img src="../../../images/pdf/image.pdf.gif" width="200" height="259"><br>
+                  mypic.tif</td>
+                <td><img src="../../../images/pdf/mask.jpg" width="200" height="267"><br>
+                  mymask.jpg</td>
+              </tr>
+            </table>
+            <p>This is the kind of output you might expect.</p>
+            <p><img src="../../../images/pdf/imagesetmask.pdf.gif" width="200" height="259"><br>
+              imagesetmask.pdf</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

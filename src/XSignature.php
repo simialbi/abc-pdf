@@ -2,24 +2,22 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
- * @property-read bool $IsModified Whether the PDF has been modified after signing.
  * @property-read bool $IsTimeValid Whether the signature's certificate was
  * time-valid when the document was signed.
  * @property-read bool $IsTrusted Whether the signature's certificate is
  * trusted according to the validation policy.
+ * @property string $TimestampServiceUrl The URL to a time-stamping
+ * service.
+ * @property-read bool $IsModified Whether the PDF has been modified after signing.
  * @property string $Location The location of the signing.
  * @property string $Reason The reason for signing.
  * @property string $Signer The name of the person signing.
  * @property Date $SigningUtcTime The time of signing in UTC format.
- * @property string $TimestampServiceUrl The URL to a time-stamping
- * service.
  * @property int $ValidationPolicy The validation policy for
  * certificates.
  */
-class XSignature extends DOTNET
+class XSignature extends \DOTNET
 {
     /**
      * {@inheritDoc}
@@ -45,9 +43,9 @@ class XSignature extends DOTNET
      * the times it was signed. For this reason, if you are signing
      * multiple fields, each signature (bar the last) needs to be signed
      * and then committed in turn. The last signature does not need to be
-     * committed because this is implicitly done by the final save.After each commit, all previous references to form fields
-     * would be invalidated. You need to obtain updated references to form
-     * fields from the Doc.Form.Fields property. 
+     * committed because this is implicitly done by the final save.After each commit, all previous references to form
+     * fields would be invalidated. You need to obtain updated references to form fields from the Doc.Form.Fields
+     * property.
      */
     public function Commit(): void
     {
@@ -64,7 +62,7 @@ class XSignature extends DOTNET
      * X509Certificate2 class constructor in
      * System.Security.Cryptography.X509Certificates (in .NET BCL) and then extract
      * certificate details such as the subject, the issuer, the serial number,
-     * the version, etc. See the Annotations example project for details. 
+     * the version, etc. See the Annotations example project for details.
      * @return array The array of encoded X.509 data for the
      * certificate(s).
      */
@@ -75,14 +73,16 @@ class XSignature extends DOTNET
 
     /**
      * Use this method to sign a signature field.In order to sign a signature, you need to use your private key. To
-     * authorize the use of this key, you need to provide your password.Typically, this password-protected private key is held in an PFX/PKCS #12
+     * authorize the use of this key, you need to provide your password.Typically, this password-protected private key
+     * is held in an PFX/PKCS #12
      * (.pfx or .p12) file. So to perform the signing operation, you provide
      * a path to this file and a password to allow use of the private
      * key.Time-stamped signatures can be produced by using the service of a Time Stamping Authority (TSA).
      * See TimestampServiceUrl.If you are signing multiple signature fields in the same PDF document,
      * you should call Commit manually after each
      * signing operation bar the last operation.If the file is not available, if the file is invalid or if the
-     * password is incorrect, then this method will raise an error. 
+     * password is incorrect, then this method will raise an error.
+     *
      * @param array|string $PathOrData The file path to or the data for the PFX/PKCS #12
      * (.pfx or .p12) file used for signing.
      * @param string $Password The password used to authorize use of the private
@@ -140,11 +140,13 @@ class XSignature extends DOTNET
      * default.)The Windows Certificate Store can be
      * accessed by using
      * System.Security.Cryptography.X509Certificates.X509Store
-     * (in .NET BCL). 
-     * @param  $Certificates
+     * (in .NET BCL).
+     *
+     * @param mixed $Certificates
+     *
      * @return bool Whether the signature is valid.
      */
-    public function Validate($Certificates = null): bool
+    public function Validate(mixed $Certificates = null): bool
     {
         return parent::Validate($Certificates);
     }

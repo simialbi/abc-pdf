@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Engine Property</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head><body style="background-color: rgb(255, 255, 255)">
+<table border="0" cellpadding="0" cellspacing="4">
+<tbody>
+<tr>
+<td valign="top"><img src="../../../images/goo.gif" height="60" width="58"></td>
+<td width="14">&nbsp;</td>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td class="pageheader">Engine Property</td>
+<td width="60">&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td background="../../../images/steel-line-3.gif" height="11"><br>
+</td>
+<td background="../../../images/steel-line-3.gif" height="11" width="60"><br>
+</td>
+<td height="11"><img src="../../../images/steel-blob-11.gif" height="11" width="11"></td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;</p>
+<table class="wsgtable" border="5" bordercolor="#ffffff" cellpadding="3" cellspacing="0">
+<tbody>
+<tr>
+<td align="center"><b>Type</b></td>
+<td><b>Default Value</b></td>
+<td><b>Read Only</b></td>
+<td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td align="center">Long</td>
+<td>2 (ABCChrome)</td>
+<td>No</td>
+<td>The engine to use for HTML import operations.</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+</td>
+<td width="60">&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td class="sectheader" valign="top"><img src="../../../images/steel-pin.gif" height="10" width="64"><br>
+Notes</td>
+<td width="14">&nbsp;</td>
+<td valign="top">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td>
+
+<p>The Engine property can take any of the following
+values:</p>
+<ul>
+<li>0 - MSHtml</li>
+<li>1 - Gecko</li>
+<li>2 - ABCChrome (default)</li>
+</ul>
+<p>This property specifies which HTML engine to use for when importing HTML pages. ABCpdf can use 
+different HTML engines to import HTML for PDF rendering.</p>
+<p>Each HTML engine supports a different set of HtmlOptions and has different characteristics.</p><p>&nbsp;</p>
+</td>
+<td width="60">&nbsp;</td>
+<td width="11">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+
+<tr><td class="sectheader" valign="top"><img src="../../../images/steel-pin.gif" height="10" width="64"><br>
+MSHtml</td><td width="14">&nbsp;</td><td valign="top"><h3>Characteristics</h3>
+<p>Due to differences in paradigms and engines' working internals, there are 
+things to note when using the MSHTML engine to render HTML documents:</p>
+<ul><li>The Screen style sheets are used during the rendering process.</li>
+<li>Page heights can vary across different pages. Segments of the HTML document 
+are composed dynamically to fit the target rectangle as accurately as possible 
+during each call to <a href="../../doc/1-methods/addimagetochain.htm">Doc.AddImageToChain</a>. This 
+means the target rectangle will be filled with more contents for larger target 
+rectangles instead of scaled to fit.</li>
+<li>For definite control of HTTP requests, you should set
+<a href="transfermodule.htm">TransferModule</a> to a non-default value.</li></ul>
+<h3>Supported methods</h3>
+<ul><li><a href="../1-methods/getscriptreturn.htm">GetScriptReturn<br></a></li>
+<li><a href="../1-methods/gettagids.htm">GetTagIDs</a></li>
+<li><a href="../1-methods/gettagrects.htm">GetTagRects</a></li>
+<li><a href="../1-methods/linkpages.htm">LinkPages</a></li>
+<li><a href="../1-methods/pagecacheclear.htm">PageCacheClear</a></li>
+<li><a href="../1-methods/pagecachepurge.htm">PageCachePurge</a></li></ul>
+<h3>Supported options</h3>
+<ul><li><a href="addforms.htm">AddForms</a></li>
+<li><a href="addlinks.htm">AddLinks</a></li>
+<li><a href="addmovies.htm">AddMovies</a></li>
+<li><a href="addtags.htm">AddTags</a></li>
+<li><a href="autotruncate.htm">AutoTruncate</a></li>
+<li><a href="browserwidth.htm">BrowserWidth</a></li>
+<li><a href="contentcount.htm">ContentCount</a></li>
+<li><a href="domarkup.htm">DoMarkup</a></li>
+<li><a href="fontembed.htm">FontEmbed</a></li>
+<li><a href="fontprotection.htm">FontProtection</a></li>
+<li><a href="fontsubstitute.htm">FontSubstitute</a></li>
+<li><a href="hidebackground.htm">HideBackground</a></li>
+<li><a href="hostwebbrowser.htm">HostWebBrowser</a></li>
+<li><a href="httpadditionalheaders.htm">HttpAdditionalHeaders</a></li>
+<li><a href="imagequality.htm">ImageQuality</a></li>
+<li><a href="logonname.htm">LogonName</a></li>
+<li><a href="logonpassword.htm">LogonPassword</a></li>
+<li><a href="makefieldnamesunique.htm">MakeFieldNamesUnique</a></li>
+<li><a href="maxatomicimagesize.htm">MaxAtomicImageSize</a></li>
+<li><a href="nocookie.htm">NoCookie</a></li>
+<li><a href="onloadscript.htm">OnLoadScript</a></li>
+<li><a href="pagecacheenabled.htm">PageCacheEnabled</a></li>
+<li><a href="pagecacheexpiry.htm">PageCacheExpiry</a></li>
+<li><a href="pagecachesize.htm">PageCacheSize</a></li>
+<li><a href="paged.htm">Paged</a></li>
+<li><a href="pageloadmethod.htm">PageLoadMethod</a></li>
+<li><a href="reloadpage.htm">ReloadPage</a></li>
+<li><a href="requestmethod.htm">RequestMethod</a></li>
+<li><a href="retrycount.htm">RetryCount</a></li>
+<li><a href="targetlinks.htm">TargetLinks</a></li>
+<li><a href="timeout.htm">Timeout</a></li>
+<li><a href="transfermodule.htm">TransferModule</a></li>
+<li><a href="useactivex.htm">UseActiveX</a></li>
+<li><a href="usejava.htm">UseJava</a></li>
+<li><a href="usenocache.htm">UseNoCache</a></li>
+<li><a href="useresync.htm">UseResync</a></li>
+<li><a href="usescript.htm">UseScript</a></li>
+<li><a href="usetheme.htm">UseTheme</a></li>
+<li><a href="usevideo.htm">UseVideo</a></li></ul></td></tr><tr><td class="sectheader" valign="top"><img src="../../../images/steel-pin.gif" height="10" width="64"><br>Gecko
+</td><td width="14">&nbsp;</td><td valign="top"><h3>Characteristics</h3>
+<ul><li>The Gecko engine is a component indepdendent on other parts of the 
+Operating System. The engine will not be affected even if you upgrade your 
+Internet Explorer or another local Firefox installation.</li>
+<li>Supports a wide range of the upcoming HTML5 and CSS3 standards.</li>
+<li>Supports the majority of the SVG Full profile. SVG graphics embedded inside 
+Web pages convert natively to PDF primitives. Alternatively, you can specify the 
+a SVG file's location in <a href="../../doc/1-methods/addimageurl.htm">Doc.AddImageUrl</a> or feed a string 
+of SVG contents to <a href="../../doc/1-methods/addimagehtml.htm">Doc.AddImageHtml</a> to have it 
+converted to PDF using the Gecko engine.</li>
+<li>Supports XML pages with XSLT and MathML.</li>
+<li>You can specify which set of stylesheets to use (Print/Screen) through the 
+use of the <a href="media.htm">Media</a> property.</li>
+<li>In large tables that span across pages, <font style="font-family: monospace">thead</font> and <font style="font-family: monospace">tfoot</font> elements are repeated across 
+different pages properly.</li>
+<li>The rendered HTML will always fill the entire current rectangle. After the 
+initial call to <a href="../../doc/1-methods/addimageurl.htm">Doc.AddImageUrl</a> or <a href="../../doc/1-methods/addimagehtml.htm">Doc.AddImageHtml</a>, the page 
+height will be fixed at that point. Subsequent pages rendered using <a href="../../doc/1-methods/addimagetochain.htm">Doc.AddImageToChain</a> will be 
+automatically <em>scaled</em> (instead of having 
+the contents reflowed) to fit in the current rectangle as much as possible.</li>
+<li>ActiveX components are not supported.</li>
+<li>The <a href="paged.htm">Paged</a> property is always assumed to be true.</li>
+<li>The Gecko engine does not use Page caching. This means that your 
+rendered PDF is never stored in a memory cache.</li>
+<li>On the other hand, Web caching is used to store contents downloaded over the 
+Internet and is configurable using with the <a href="usenocache.htm">UseNoCache</a> property.</li>
+<li>JavaScript in <a href="onloadscript.htm">OnLoadScript</a> cannot directly 
+modify the document object. For example, <span style="font-family: monospace">document.write("hello world");</span> would not 
+work. Most of the time you can work around to get your desired effect by 
+indirectly modifying elements on the page, such as <span style="font-family: monospace">document.body.innerHTML = "hello world";</span></li>
+<li>The use of <a href="onloadscript.htm">OnLoadScript</a> does not require <a href="usescript.htm">UseScript</a>. You are free to use JavaScript to customize 
+the page without allowing JavaScript execution in the HTML.</li>
+</ul>
+<h3>Supported methods</h3>
+<ul><li><a href="../1-methods/getscriptreturn.htm">GetScriptReturn<br></a></li>
+<li><a href="../1-methods/gettagids.htm">GetTagIDs</a></li>
+<li><a href="../1-methods/gettagrects.htm">GetTagRects</a></li>
+<li><a href="../1-methods/linkpages.htm">LinkPages</a></li>
+</ul>
+<h3>Supported options</h3>
+<ul><li><a href="addforms.htm">AddForms</a></li>
+<li><a href="addlinks.htm">AddLinks</a></li>
+<li><a href="addmovies.htm">AddMovies</a> (Flash only)</li>
+<li><a href="addtags.htm">AddTags</a></li>
+<li><a href="browserwidth.htm">BrowserWidth</a></li>
+<li><a href="fontembed.htm">FontEmbed</a></li>
+<li><a href="fontsubstitute.htm">FontSubstitute</a></li>
+<li><a href="fontprotection.htm">FontProtection</a></li>
+<li><a href="hidebackground.htm">HideBackground</a></li>
+<li><a href="imagequality.htm">ImageQuality</a></li>
+<li><a href="logonname.htm">LogonName</a></li>
+<li><a href="logonpassword.htm">LogonPassword</a></li>
+<li><a href="makefieldnamesunique.htm">MakeFieldNamesUnique</a></li>
+<li><a href="media.htm">Media</a></li>
+<li><a href="onloadscript.htm">OnLoadScript</a></li>
+<li><a href="usenocache.htm">UseNoCache</a></li>
+<li><a href="retrycount.htm">RetryCount</a></li>
+<li><a href="timeout.htm">Timeout</a></li>
+<li><a href="usescript.htm">UseScript</a></li></ul>
+<h3>Script accessible properties<br></h3>
+<ul>
+<li><span style="font-weight: bold">window.ABCpdf_go</span> ABCpdf will wait for 
+this property to be either undefined or true before capturing the HTML page. You 
+can use this property to delay rendering of the HTML page. This can be used to 
+control the moment of "capture" for animated HTML pages. This property is 
+initially undefined. You need to bootstrap this property to false in <a href="onloadscript.htm">OnLoadScript</a> for it to be considered. <a href="usescript.htm">UseScript</a> is also required for this property to be 
+considered. The whole HTML rendering operation is still subject to the Timeout 
+property's value.</li>
+</ul>
+</td></tr></tbody>
+</table>
+<p>&nbsp;</p>
+</body></html>

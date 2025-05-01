@@ -3,13 +3,13 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.2",
         "ext-com_dotnet": "*",
         "ext-dom": "*"
     },
     "autoload": {
         "psr-4": {
-            "ABCpdf\\": "src"
+            "ABCPdf\\": "src"
         }
     },
     "bin": [

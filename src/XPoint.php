@@ -2,15 +2,13 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property string $String The point as a string.
  * @property float $X The horizontal coordinate.
  * @property float $Y The vertical coordinate.
  */
-class XPoint extends DOTNET
+class XPoint extends \DOTNET
 {
     /**
      * {@inheritDoc}

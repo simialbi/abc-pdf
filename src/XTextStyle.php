@@ -2,8 +2,6 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property bool $Bold Whether to apply a synthetic bold effect.
@@ -22,7 +20,7 @@ use DOTNET;
  * @property bool $Underline Whether to underline text.
  * @property float $WordSpacing The inter-word spacing.
  */
-class XTextStyle extends DOTNET
+class XTextStyle extends \DOTNET
 {
     /**
      * {@inheritDoc}

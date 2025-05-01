@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>ComFactory Object</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">ComFactory Object</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>Allows the creation of objects in the same application domain.
+              The methods of this class do nothing more than creating objects
+              so all methods are thread-safe. The ComFactory object can be obtained
+              from the ComFactory property of every other classes.</p>
+            <p>If ABCpdf is installed as a COM+ application and the COM+ application pool
+              is configured to have a pooling size greater than one, objects created with
+              CreateObject may not be in the same application domain, depending on which
+              application(s) in the application pool is/are chosen to execute the calls
+              to CreateObject. When an object is passed as a parameter to a method, it
+              must be in the same application domain as the invoked object for the invoked
+              object to access the content of the parameter.</p>
+            <p>In such cases, use the same ComFactory object or the ComFactory object from
+             the ComFactory property of an existing object to ensure that newly created
+             objects are in the same application domain.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp; </td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="sectheader">
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center" width="100"><b>Method</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100"><a href="1-methods/createdoc.htm">CreateDoc</a></td>
+                <td>Creates a Doc object.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100"><a href="1-methods/createimage.htm">CreateImage</a></td>
+                <td>Creates an Image object.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100"><a href="1-methods/createxcolor.htm">CreateXColor</a></td>
+                <td>Creates an XColor object.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100"><a href="1-methods/createxpoint.htm">CreateXPoint</a></td>
+                <td>Creates an XPoint object.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100"><a href="1-methods/createxrect.htm">CreateXRect</a></td>
+                <td>Creates an XRect object.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100"><a href="1-methods/createxsavetemplatedata.htm">CreateXSaveTemplateData</a></td>
+                <td>Creates an XSaveTemplateData object.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100"><a href="1-methods/createxsettings.htm">CreateXSettings</a></td>
+                <td>Creates an XSettings object.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100"><a href="1-methods/creatextextstyle.htm">CreateXTextStyle</a></td>
+                <td>Creates an XTextStyle object.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100"><a href="1-methods/creatextransform.htm">CreateXTransform</a></td>
+                <td>Creates an XTransform object.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp; </td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="sectheader">
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center" width="100"><b>Property</b></td>
+                <td align="center"><b>Default</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center" width="100">none</td>
+                <td>&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

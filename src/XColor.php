@@ -2,8 +2,6 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property int $Alpha The alpha opacity.
@@ -18,7 +16,7 @@ use DOTNET;
  * @property string $String The color as a string.
  * @property int $Yellow The yellow component.
  */
-class XColor extends DOTNET
+class XColor extends \DOTNET
 {
     /**
      * {@inheritDoc}

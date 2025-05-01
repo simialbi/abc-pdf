@@ -2,14 +2,12 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property-read float $MeasureDpiX The horizontal measurement resolution.
  * @property-read float $MeasureDpiY The vertical measurement resolution.
  */
-class XSaveTemplateData extends DOTNET
+class XSaveTemplateData extends \DOTNET
 {
     /**
      * {@inheritDoc}
