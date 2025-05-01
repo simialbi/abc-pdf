@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>EmbedFont Method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">EmbedFont Method</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>Embeds a font into the document.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Syntax</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <p><code>FontID = Doc.EmbedFont(FontName [,Language[, Vertical[, Subset[,
+              Force]]]])</code></p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Params</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">FontName</td>
+                <td>String</td>
+                <td>The name of the font typeface.</td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Language</td>
+                <td>String</td>
+                <td>
+                  <p>The language type to use (optional).</p>
+                  <p>See the <a href="../../../3-concepts/7-fonts.htm">Fonts and
+                    Languages</a> section for details on language types. The default
+                    language type is Latin.</p>
+                </td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Vertical</td>
+                <td>Boolean</td>
+                <td>
+                  <p>Whether the text direction should be vertical (optional).</p>
+                  <p>See the<a href="../../../3-concepts/7-fonts.htm"> Fonts and
+                    Languages</a> section for details on writing directions. The
+                    default is false to indicate standard left-to-right layout.</p>
+                </td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Subset</td>
+                <td>Boolean</td>
+                <td>
+                  <p>Whether to subset the font (optional).</p>
+                  <p>See the<a href="../../../3-concepts/7-fonts.htm"> Fonts and
+                    Languages</a> section for details on subsetting. The default
+                    is false to indicate that the font should not be subsetted.</p>
+                </td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Force</td>
+                <td>Boolean</td>
+                <td>
+                  <p>Whether to override permissions on the font (optional).</p>
+                  <p>Fonts often contain embedded licensing information. By default,
+                    ABCpdf will prevent you from embedding fonts which indicate
+                    that embedding is not permitted.</p>
+                  <p>You can force the font to be embedded by passing true for
+                    this value.</p>
+                </td>
+              </tr>
+              <tr valign="top">
+                <td align="center">FontID</td>
+                <td>Long</td>
+                <td>The Object ID of the newly added Font object.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>Embeds a font into the document.</p>
+            <p>The font name, a description of the font style and the the font
+              glyph descriptions themselves are placed into the document. This
+              ensures that the document will always display perfectly on every
+              system and that font substitutions will never need to be made.</p>
+            <p>There are a number of reasons you may not wish to embed fonts and,
+              instead, use the <a href="addfont.htm">AddFont</a> method. Embedding
+              fonts can increase the size of your PDF considerably. Additionally,
+              by distributing a PDF with an embedded font, you are actually redistributing
+              the font itself. You should check with your font supplier or legal
+              department that you have permission to do this.</p>
+            <p>For information on how to specify font names, see the <a href="addfont.htm">AddFont</a>
+              method.</p>
+            <p>The EmbedFont method returns the Object ID of the newly added
+              Font object. Typically, you will want to assign this return value
+              to the document Font property using code of the form.</p>
+            <p><code>theDoc.Font = theDoc.AddFont(&quot;Courier&quot;)</code></p>
+            <p>If the specified font could not be found, then you will get an Object
+              ID of zero returned. You may wish to check for this possibility.
+              Otherwise, a default font will be used.</p>
+            <p>Fonts are cached so newly added fonts will not be available to
+              ABCpdf until the application is restarted. If you need to dynamically
+              load a font, you can pass this method a path to your font file. This
+              will add the font to the cache and make it available for use. You
+              should not move, rename or delete a font file which has been dynamically
+              loaded using this technique.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>The following code embeds the font 'Comic Sans MS' into the document
+              and then adds some text.</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              theDoc.FontSize = 216<br>
+              theFont = &quot;Comic Sans MS&quot;<br>
+              theDoc.Font = theDoc.EmbedFont(theFont)<br>
+              theDoc.AddText theFont<br>
+              theDoc.Save &quot;c:\mypdfs\docembedfont.pdf&quot;</code></p>
+            <p><img src="../../../images/pdf/docembedfont.pdf.gif" width="200" height="259"><br>
+              docembedfont.pdf</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

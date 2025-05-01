@@ -1,0 +1,191 @@
+<html>
+<head>
+<title>GetData Method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">GetData Method</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>Saves a document to memory.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Syntax</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <p><code>Data = Doc.GetData()</code></p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Params</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top"> 
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Data</td>
+                <td>Array of Bytes</td>
+                <td>The PDF document as an array of bytes.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>Normally, you will want to save your documents using the <a href="save.htm">Save</a>
+              method. However, sometimes, you will need to obtain your PDF as raw
+              data rather than in file format. The GetData method allows you to
+              do this.</p>
+            <p>You may wish to write a PDF direct to a client browser rather than
+              going through an intermediate file. The data you obtain using GetData
+              can be written directly to an HTTP stream using Response.BinaryWrite.
+              Similarly, you may wish to obtain raw data for insertion into a database.</p>
+            <table border="0" cellpadding="10" class="backgrounder">
+              <tr>
+                <td>
+                  <p><b>PDFs and Internet Explorer. </b>The combination of Internet
+                    Explorer and Acrobat is not always trouble-free - particularly
+                    under https or using older versions of Internet Explorer. It can be
+                    difficult to know exactly where the problem lies because there
+                    is an interaction of the Operating System, Internet Explorer and Acrobat.
+                    Any of these can be the cause.</p>
+                  <p>Sometimes, Internet Explorer may get 'stuck' on a particular content
+                    type and insist on displaying your PDF as HTML. In this case,
+                    you will see random text starting with %PDF. Sometimes, this
+                    can happen if you stream PDF data to a window which was previously
+                    displaying HTML.</p>
+                  <p>Sometimes, server-side debugging results in extra data being
+                    inserted into the content stream. While this may not matter
+                    for HTML, it will corrupt binary documents like PDF.</p>
+                  <p>Sometimes, your code may inadvertently insert extra data into
+                    the content stream. Again, this will corrupt the PDF. Error
+                    messages are a common cause of this kind of corruption.</p>
+                  <p>HTTP compression may result in PDF streams being compressed
+                    before they are returned to the browser. While browsers are able to deal
+                    with this type of compression, Acrobat may not be able to.
+                    You can see whether this type of compression is being used by examining
+                    the headers returned to the browser using a tool like IEWatch.
+                    If you are using IIS 6 compression, you can disable it on a
+                    page-by-page basis using the IIS Metabase Explorer from the
+                    IIS 6 resource kit.</p>
+                  <p>For testing purposes, you may wish to change the content-disposition
+                    from 'inline' to 'attachment'. This will allow you to download
+                    the data rather than viewing it in your browser. You can then
+                    check the downloaded document using Acrobat or a hex editor.</p>
+                  <p>Alternatively, if the problem is that PDFs seem to be cached,
+                    you may wish to check the 'Enable Content Expiration' checkbox
+                    you will find under the Web Site Properties.</p>
+                  <p>We would suggest two steps:</p>
+                  <ol>
+                    <li>Your first step should be to eliminate ABCpdf as the cause.
+                      Why not save the PDF to disk at the same time as sending
+                      it to the client? That way you can establish that the PDF
+                      is fine. If you want to take it further, you can then read
+                      the PDF data from disk and stream it direct to the client.</li>
+                    <li>The example site streams PDF data direct to the client.
+                      So install the example site into a new virtual directory,
+                      and establish whether the same issue exists for the example site.
+                      If it works, then it's simply a matter of moving your current
+                      code base and the example site code base towards each other
+                      until you find the cause of the problem.</li>
+                  </ol>
+                </td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>The following code illustrates how one might add text to a PDF
+              and then write it direct to the client browser. This code is an
+              entire Active Server Page - hello.asp.</p>
+            <p><code>&lt;% @Language=&quot;VBScript&quot; EnableSessionState=FALSE
+              %&gt;<br>
+              <br>
+              &lt;%<br>
+              Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              theDoc.FontSize = 96<br>
+              theDoc.AddText &quot;Hello World&quot;<br>
+              theData = theDoc.GetData()<br>
+              Response.ContentType = &quot;application/pdf&quot;<br>
+              Response.AddHeader &quot;content-length&quot;, UBound(theData) -
+              LBound(theData) + 1<br>
+              Response.AddHeader &quot;content-disposition&quot;, &quot;inline;
+              filename=MyPDF.PDF&quot;<br>
+              Response.BinaryWrite theData<br>
+              %&gt;</code></p>
+            <p><img src="../../../images/pdf/docsave.pdf.gif" width="200" height="259"><br>
+              hello.asp</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

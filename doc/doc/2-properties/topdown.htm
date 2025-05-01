@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>TopDown Property</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">TopDown Property</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>&nbsp;</p>
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Type</b></td>
+                <td><b>Default Value</b></td>
+                <td><b>Read Only</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Boolean</td>
+                <td>&nbsp;&nbsp;False</td>
+                <td>No</td>
+                <td>The gradient of the vertical coordinate.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>PDF coordinates are measured upwards from the bottom of the document.
+              For some types of layout, it can be useful to measure coordinates
+              downwards from the top of the document.</p>
+            <p>By setting this property to true, coordinates are assumed to start
+              at the top rather than the bottom of the document.</p>
+            <p>More precisely, the origin is assumed to be at the top-left of the
+              current <a href="mediabox.htm">MediaBox</a>.</p>
+            <p>There are a <a href="../../../3-concepts/c-coordinates.htm">variety
+              of methods</a> you can use to change coordinate systems.</p>
+            <p>Note that transforms operate on the underlying PDF coordinate space
+              rather than any abstraction specified by the <a href="units.htm">Units</a>
+              and <a href="topdown.htm">TopDown</a> properties. If you are using
+              transforms, you will find it easiest to work in the native PDF coordinate
+              space.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>The following code creates a PDF document and adds a grid measured
+              in inches.</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              theDoc.Units = &quot;inches&quot;<br>
+              theDoc.TopDown = True<br>
+              theDoc.Width = 1 / 8<br>
+              theDoc.FontSize = 1<br>
+              theDoc.Rect.Pin = 1<br>
+              For i = 0 To 12 Step 2<br>
+              &nbsp;&nbsp;theDoc.AddLine 0, i, 12, i<br>
+              &nbsp;&nbsp;theDoc.Rect.Position 0, i<br>
+              &nbsp;&nbsp;theDoc.AddText i<br>
+              &nbsp;&nbsp;theDoc.AddLine i, 0, i, 12<br>
+              &nbsp;&nbsp;theDoc.Rect.Position i, 0<br>
+              &nbsp;&nbsp;theDoc.AddText i<br>
+              Next<br>
+              theDoc.Save &quot;c:\mypdfs\doctopdown.pdf&quot;</code></p>
+            <p><img src="../../../images/pdf/doctopdown.pdf.gif" width="200" height="259"><br>
+              doctopdown.pdf</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

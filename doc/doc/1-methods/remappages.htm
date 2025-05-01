@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>RemapPages Method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">RemapPages Method</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>Remaps pages for reordering, copying and deletion.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Syntax</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <p><code>Doc.RemapPages(Pages)</code></p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Params</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Pages</td>
+                <td>String</td>
+                <td>The ordered list of page numbers of pages to remain.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>This method provides a simple method for remapping the pages in
+              a document. It can be used for reordering, copying or deleting pages.</p>
+            <p>It accepts a list of page numbers and reorders the pages in the
+              document so that they mach these page numbers. If a number is repeated
+              more than once, the page is duplicated. If a number is omitted, the
+              page is deleted.</p>
+            <p>Page numbers can be delimited using spaces, commas or semicolons.
+              The first page in a document is page one. So to reverse a four-page
+              document, you might use &quot;4 3 2 1&quot;.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>The following code snippet illustrates how one might reverse all
+              the pages in a document.</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              theDoc.Read &quot;c:\mypics\sample.pdf&quot;<br>
+              theDoc.FontSize = 500<br>
+              theDoc.Color = &quot;255 0 0&quot;<br>
+              theDoc.HPos = 0.5<br>
+              theDoc.VPos = 0.3<br>
+              theCount = theDoc.PageCount<br>
+              thePages = &quot;&quot;<br>
+              For i = 1 To theCount<br>
+              &nbsp;&nbsp;theDoc.PageNumber = i<br>
+              &nbsp;&nbsp;theDoc.AddText i<br>
+              &nbsp;&nbsp;thePages = thePages &amp; (theCount - i + 1) &amp; &quot;
+              &quot;<br>
+              Next<br>
+              theDoc.RemapPages thePages<br>
+              theDoc.Save &quot;c:\mypdfs\docremappages.pdf&quot;</code></p>
+            <table width="100%" border="0" cellspacing="3" cellpadding="3">
+              <tr>
+                <td><img src="../../../images/pdf/docremappages.pdf1.gif" width="140" height="181"><br>
+                  docremappages.pdf [Page 1]</td>
+                <td><img src="../../../images/pdf/docremappages.pdf2.gif" width="140" height="181"><br>
+                  docremappages.pdf [Page 2]</td>
+              </tr>
+              <tr>
+                <td><img src="../../../images/pdf/docremappages.pdf3.gif" width="140" height="181"><br>
+                  docremappages.pdf [Page 3]</td>
+                <td><img src="../../../images/pdf/docremappages.pdf4.gif" width="140" height="181"><br>
+                  docremappages.pdf [Page 4]</td>
+              </tr>
+            </table>
+            <p></p>
+            <p></p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

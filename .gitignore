@@ -30,6 +30,3 @@ phpunit.phar
 
 # yii language extraction config file
 config.php
-
-# doc
-doc

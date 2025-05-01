@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>ColorSpace Property</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">ColorSpace Property</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>&nbsp;</p>
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Type</b></td>
+                <td><b>Default Value</b></td>
+                <td><b>Read Only</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">String</td>
+                <td>&nbsp;&nbsp;&quot;RGB&quot;</td>
+                <td>No</td>
+                <td>The name of the output color space.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>A string representation of the output color space. This property
+              can take any of the following values:</p>
+            <ul>
+              <li>RGB - red, green and blue</li>
+              <li>Gray - grayscale</li>
+              <li>CMYK - cyan, magenta, yellow and black</li>
+              <li>Lab - a device-independent color space</li>
+            </ul>
+            <p>The TIFF output format supports all color spaces. The JP2 (JPEG
+              2000) format supports RGB, Gray and CMYK. The JPG, GIF, PNG and
+              .BMP. output formats support 8-bit RGB and 8-bit Gray only.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>The following example shows the effect that this parameter has
+              on PDF rendering.</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              theDoc.AddImage &quot;c:\mypics\Shuttle.jpg&quot;<br>
+              theDoc.Rect.String = theDoc.MediaBox.String<br>
+              ' Render document in Gray colorspace<br>
+              theDoc.Rendering.ColorSpace = &quot;Gray&quot;<br>
+              theDoc.Rendering.DotsPerInch = 36<br>
+              theDoc.Rendering.Save &quot;c:\mypdfs\RenderingColorSpace.png&quot;<br>
+              theDoc.Clear</code></p>
+            <p><img src="../../../images/pdf/Shuttle.jpg" width="306" height="396" border="1"><br>
+              Shuttle.jpg</p>
+            <p><img src="../../../images/pdf/RenderingColorSpace.png" width="306" height="396" border="1"><br>
+              RenderingColorSpace.png</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

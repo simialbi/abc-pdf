@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Validate Method</title>
+  <meta content="text/html; charset=us-ascii" http-equiv=
+  "Content-Type">
+  <link rel="stylesheet" href="../../../mystyles.css" type=
+  "text/css">
+  <meta name="GENERATOR" content="MSHTML 8.00.6001.18813">
+</head>
+
+<body style="background-color: rgb(255, 255, 255);">
+  <table border="0" cellpadding="0" cellspacing="4">
+    <tbody>
+      <tr>
+        <td valign="top"><img src="../../../images/goo.gif" height=
+        "60" width="58"></td>
+        <td width="14">&nbsp;</td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width=
+          "100%">
+            <tbody>
+              <tr>
+                <td class="pageheader">Validate Method</td>
+                <td width="60">&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td background="../../../images/steel-line-3.gif"
+                height="11"></td>
+                <td background="../../../images/steel-line-3.gif"
+                height="11" width="60"></td>
+                <td height="11"><img src=
+                "../../../images/steel-blob-11.gif" height="11"
+                width="11"></td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Check and validate the status of this
+                  signature.</p>
+                  <p>&nbsp;</p>
+                </td>
+                <td width="60">&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="sectheader" valign="top"><img src=
+        "../../../images/steel-pin.gif" height="10" width="64"><br>
+        Syntax</td>
+        <td width="14">&nbsp;</td>
+        <td valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width=
+          "100%">
+            <tbody>
+              <tr>
+                <td valign="top">
+                  <p><code>Truth = XSignature.Validate([Certificates])</code></p>
+                  <p>&nbsp;</p>
+                </td>
+                <td width="60">&nbsp;</td>
+                <td width="11">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="sectheader" valign="top"><img src=
+        "../../../images/steel-pin.gif" height="10" width="64"><br>
+        Params</td>
+        <td width="14">&nbsp;</td>
+        <td valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width=
+          "100%">
+            <tbody>
+              <tr>
+                <td valign="top">
+                  <table class="wsgtable" border="5" bordercolor=
+                  "#FFFFFF" cellpadding="3" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td align="center"><b>Name</b></td>
+                        <td><b>Type</b></td>
+                        <td><b>Description</b></td>
+                      </tr>
+                      <tr valign="top">
+                        <td align="center">Certificate</td>
+                        <td>Array each of whose items is either String or Array of Bytes</td>
+                        <td>An array of file paths to or data for X.509 certificate
+                        (.cer) files.</td>
+                      </tr>
+                      <tr valign="top">
+                        <td align="center">Truth</td>
+                        <td>Boolean</td>
+                        <td>Whether the signature is valid.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p>&nbsp;</p>
+                </td>
+                <td width="60">&nbsp;</td>
+                <td width="11">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="sectheader" valign="top"><img src=
+        "../../../images/steel-pin.gif" height="10" width="64"><br>
+        Notes</td>
+        <td width="14">&nbsp;</td>
+        <td valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width=
+          "100%">
+            <tbody>
+              <tr>
+                <td>
+                  This method returns true if the signature is
+                  valid. To be precise, this method updates the
+                  properties <a href=
+                  "../2-properties/ismodified.htm">IsModified</a>,
+                  <a href=
+                  "../2-properties/IsTimeValid.htm">IsTimeValid</a>
+                  and <a href=
+                  "../2-properties/IsTrusted.htm">IsTrusted</a>.
+                  The return value is true only if the <a href=
+                  "../2-properties/ismodified.htm">IsModified</a>
+                  is false, and both <a href=
+                  "../2-properties/IsTimeValid.htm">IsTimeValid</a>
+                  and <a href=
+                  "../2-properties/IsTrusted.htm">IsTrusted</a> are
+                  true.<br>
+                  <p>Signatures' certificates can only be validated
+                  by referencing certificates issued by
+                  certification authorities.</p>
+                  <p>This method allows you to check and validate
+                  the status of a signature with reference to a set
+                  of such certificates. Additionally, ABCpdf can
+                  also use certificates found in the Windows
+                  Certificate Store for validation. See <a href=
+                  "../2-properties/validationpolicy.htm">ValidationPolicy</a>
+                  for details.</p>
+                  <p>The certificates you provide will be cached at
+                  a document level so this method is efficient
+                  even when checking multiple signatures within one
+                  document. If you do not provide any parameter,
+                  this method will use the previously cached
+                  certificates to validate the document. Therefore,
+                  unless <a href=
+                  "../2-properties/validationpolicy.htm">ValidationPolicy</a>
+                  is set to EntireChainTrust, or certificates have
+                  been provided using a previous call to this
+                  method, calling this method without any certificate will
+                  cause an error to be raised to indicate that
+                  there is no certificate to validate against.</p>
+                  <p>ABCpdf does not currently do revocation checks
+                  on certificates provided and on certificates
+                  embedded in a PDF document. If you need to do
+                  this type of operation, you should use the
+                  <a href="getcertificates.htm">GetCertificates</a>
+                  method and check the certificates yourself.</p>
+                  <p>If a certificate is unavailable or invalid,
+                  this method may raise an error. This means
+                  validating against an unsigned signature field
+                  will cause an error to be raised.</p>
+                  <table class="backgrounder" border="0"
+                  cellpadding="10">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p><b>How does Adobe Reader validate a
+                          PDF document without certificate
+                          files?</b></p>
+                          <p>You may find that Adobe Reader does
+                          not need a list of certificate files to
+                          validate PDF documents. This is because
+                          Adobe Reader may use several built-in
+                          Public Key Infrastructure hierarchies to
+                          certify PDF documents:</p>
+                          <ul>
+                            <li><a href=
+                            "http://www.adobe.com/security/partners_cds.html">
+                            Certified Document Services (CDS)</a>
+                            is a trust hierarchy that chains back
+                            to the Adobe Root Certification
+                            Authority (Adobe Root CA).</li>
+                            <li><a href=
+                            "http://www.adobe.com/security/approved-trust-list.html">
+                            Adobe Approved Trust List (AATL)</a> is
+                            an extra list of CA certificates that
+                            Adobe Reader may download from Adobe
+                            periodically (for Adobe Reader/Acrobat
+                            9 or later).</li>
+                            <li>The Windows Certificate Store. This
+                            is only true if Windows digital
+                            signature integration is enabled in
+                            Acrobat, which is not the default
+                            for Acrobat 9 and X.</li>
+                          </ul>
+                          <p>In order to validate a PDF document
+                          the same way Adobe Reader does, you need
+                          to use the same certificates it uses.
+                          This can be easily achieved by exporting
+                          the <em>trusted identities</em> from
+                          Adobe Reader to .cer format
+                          certificate files. (Note: CDS and AATL
+                          certificates are
+                          usually <em>not</em>
+                          in your Windows Certificate Store by
+                          default.)</p>
+                          <p>The Windows Certificate Store can be
+                          accessed by using
+                          System.Security.Cryptography.X509Certificates.X509Store
+                          (in .NET BCL).</p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p>&nbsp;</p>
+                </td>
+                <td width="60">&nbsp;</td>
+                <td width="11">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="sectheader" valign="top"><img src=
+        "../../../images/steel-pin.gif" height="10" width="64"><br>
+        Example</td>
+        <td width="14">&nbsp;</td>
+        <td valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width=
+          "100%">
+            <tbody>
+              <tr>
+                <td>
+                  <code>' Validate using certificate files<br>Set
+                  theDoc = Server.CreateObject("ABCpdf12.Doc")<br>theDoc.Read
+                  Server.MapPath("../Rez/Signed.pdf")<br>Dim
+                  theCerts(0)<br>theCerts(0) = Server.MapPath("../Rez/JohnSmith.cer")<br>Set
+                  theSig = theDoc.Form("Signature")<br>If theSig.Validate(theCerts)
+                  Then<br>&nbsp;&nbsp;theDoc.AddText "Signature valid at "
+                  &amp; Now<br>End If<br>theDoc.Save
+                  Server.MapPath("SignedAndValidated.pdf")</code></p>
+                  <p>&nbsp;</p>
+                </td>
+                <td width="60">&nbsp;</td>
+                <td width="11">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+</body>
+</html>

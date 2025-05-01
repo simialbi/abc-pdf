@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>FrameRect Method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../../mystyles.css"></head>
+
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top"><img src="../../../images/goo.gif" width="58" height="60"></td>
+    <td width="14">&nbsp;</td>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pageheader">FrameRect Method</td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td background="../../../images/steel-line-3.gif" height="11"></td>
+          <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+          <td height="11"><img src="../../../images/steel-blob-11.gif" width="11" height="11"></td>
+        </tr>
+        <tr>
+          <td>
+            <p>Adds a rectangular frame to the current page.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Syntax</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <p><code>GraphicID = Doc.FrameRect([RadiusX [, RadiusY [, Inside]]])</code></p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Params</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <table class="wsgtable" cellpadding="3" cellspacing="0" border="5" bordercolor="#FFFFFF">
+              <tr>
+                <td align="center"><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Description</b></td>
+              </tr>
+              <tr valign="top">
+                <td align="center">RadiusX</td>
+                <td>Double</td>
+                <td>The horizontal radius to use for rounded corners (optional).</td>
+              </tr>
+              <tr valign="top">
+                <td align="center">RadiusY</td>
+                <td>Double</td>
+                <td>The vertical radius to use for rounded corners (optional).</td>
+              </tr>
+              <tr valign="top">
+                <td align="center">Inside</td>
+                <td>Boolean</td>
+                <td>Whether to draw the frame inside the rectangle (optional).</td>
+              </tr>
+              <tr valign="top">
+                <td align="center">GraphicID</td>
+                <td>Long</td>
+                <td>The Object ID of the newly added Graphic object.</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Notes</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>Adds a rectangular frame to the current page. The frame location
+              and size is determined by the current <a href="../2-properties/rect.htm">rectangle</a>,
+              the line color is determined by the current <a href="../2-properties/color.htm">color</a>,
+              the line width is determined by the current <a href="../2-properties/width.htm">width</a>
+              and any options are determined by the current <a href="../2-properties/options.htm">options</a>.</p>
+            <p>By specifying values for the horizontal and vertical radius parameters,
+              you can draw rectangles with rounded corners. The values refers
+              to the radii of the ellipse used to draw the corners.</p>
+            <p>By setting the horizontal radius parameter to half the width of
+              the rect and the vertical radius parameter to half the height of
+              the rect, you can draw ovals and circles.</p>
+            <p>By default, frames are drawn round the outside of the current rectangle.
+              This allows you to add content and then frame it ensuring that the
+              frame and the content do not overlap. However, sometimes you may
+              wish to draw the frame round the inside of the rectangle. You can
+              do this by setting the Inside parameter to true.</p>
+            <p>The FrameRect method returns the Object ID of the newly added
+              Graphic object.</p>
+            <p>&nbsp;</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="sectheader"><img src="../../../images/steel-pin.gif" width="64" height="10"><br>Example</td>
+    <td width="14">&nbsp;</td>
+    <td valign="top">
+      <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>The following code adds a black frame to a document. The frame
+              is inset from the edges of the document by 50 points horizontally
+              and 100 points vertically.</p>
+            <p><code>Set theDoc = Server.CreateObject(&quot;ABCpdf12.Doc&quot;)<br>
+              theDoc.Rect.Inset 50, 100<br>
+              theDoc.FrameRect<br>
+              theDoc.Save &quot;c:\mypdfs\docframerect.pdf&quot;</code></p>
+            <p><img src="../../../images/pdf/docframerect.pdf.gif" width="200" height="259"><br>
+              docframerect.pdf</p>
+          </td>
+          <td width="60">&nbsp;</td>
+          <td width="11">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>
