@@ -2,12 +2,9 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
-
  */
-class ComFactory extends DOTNET
+class ComFactory extends \DOTNET
 {
     /**
      * {@inheritDoc}
@@ -15,7 +12,7 @@ class ComFactory extends DOTNET
     public function __construct(
         string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.ComFactory',
-        int $codepage = CP_ACP
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -23,7 +20,7 @@ class ComFactory extends DOTNET
 
     /**
      * Use this method to create a Doc object in the application domain
-     * of the ComFactory object. 
+     * of the ComFactory object.
      * @return Doc The newly created Doc object.
      */
     public function CreateDoc(): Doc
@@ -33,7 +30,7 @@ class ComFactory extends DOTNET
 
     /**
      * Use this method to create an Image object in the application domain
-     * of the ComFactory object. 
+     * of the ComFactory object.
      * @return XImage The newly created Image object.
      */
     public function CreateImage(): XImage
@@ -43,7 +40,7 @@ class ComFactory extends DOTNET
 
     /**
      * Use this method to create an XColor object in the application domain
-     * of the ComFactory object. 
+     * of the ComFactory object.
      * @return XColor The newly created XColor object.
      */
     public function CreateXColor(): XColor
@@ -53,7 +50,7 @@ class ComFactory extends DOTNET
 
     /**
      * Use this method to create an XPoint object in the application domain
-     * of the ComFactory object. 
+     * of the ComFactory object.
      * @return XPoint The newly created XPoint object.
      */
     public function CreateXPoint(): XPoint
@@ -63,7 +60,7 @@ class ComFactory extends DOTNET
 
     /**
      * Use this method to create an XRect object in the application domain
-     * of the ComFactory object. 
+     * of the ComFactory object.
      * @return XRect The newly created XRect object.
      */
     public function CreateXRect(): XRect
@@ -73,7 +70,7 @@ class ComFactory extends DOTNET
 
     /**
      * Use this method to create an XSaveTemplateData object in the application domain
-     * of the ComFactory object. 
+     * of the ComFactory object.
      * @return XSaveTemplateData The newly created XSaveTemplateData object.
      */
     public function CreateXSaveTemplateData(): XSaveTemplateData
@@ -83,7 +80,7 @@ class ComFactory extends DOTNET
 
     /**
      * Use this method to create an XSettings object in the application domain
-     * of the ComFactory object. 
+     * of the ComFactory object.
      * @return XSettings The newly created XSettings object.
      */
     public function CreateXSettings(): XSettings
@@ -93,7 +90,7 @@ class ComFactory extends DOTNET
 
     /**
      * Use this method to create an XTextStyle object in the application domain
-     * of the ComFactory object. 
+     * of the ComFactory object.
      * @return XTextStyle The newly created XTextStyle object.
      */
     public function CreateXTextStyle(): XTextStyle
@@ -103,7 +100,7 @@ class ComFactory extends DOTNET
 
     /**
      * Use this method to create an XTransform object in the application domain
-     * of the ComFactory object. 
+     * of the ComFactory object.
      * @return XTransform The newly created XTransform object.
      */
     public function CreateXTransform(): XTransform

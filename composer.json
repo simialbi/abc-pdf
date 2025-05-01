@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ABCpdf\\": "src"
+            "ABCPdf\\": "src"
         }
     },
     "bin": [

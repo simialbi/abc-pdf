@@ -2,8 +2,6 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property bool $Bold Whether to apply a synthetic bold effect.
@@ -22,7 +20,7 @@ use DOTNET;
  * @property bool $Underline Whether to underline text.
  * @property float $WordSpacing The inter-word spacing.
  */
-class XTextStyle extends DOTNET
+class XTextStyle extends \DOTNET
 {
     /**
      * {@inheritDoc}
@@ -30,7 +28,7 @@ class XTextStyle extends DOTNET
     public function __construct(
         string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.XTextStyle',
-        int $codepage = CP_ACP
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);

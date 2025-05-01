@@ -1,18 +1,20 @@
 #!/usr/bin/env php
 <?php
 
-$root = __DIR__ . '\\..\\doc\\';
+$ds = DIRECTORY_SEPARATOR;
+$root = dirname(__DIR__) . "{$ds}doc$ds";
 
 $dh = opendir($root);
 while (false !== ($class = readdir($dh))) {
     if ($class === '.' || $class === '..') {
         continue;
     }
-    $dir = "$root$class\\";
+    $dir = "$root$class{$ds}";
 
-    if (file_exists("$dir\\default.htm")) {
+    if (file_exists("$dir{$ds}default.htm")) {
+        $str = str_replace('&nbsp;', '', file_get_contents("$dir{$ds}default.htm"));
         $dom = new DOMDocument();
-        $dom->loadHTMLFile("$dir\\default.htm");
+        $dom->loadHTML($str);
         $xquery = new DOMXPath($dom);
 
         $result = $xquery->query('//*/td[@class="pageheader"]');
@@ -21,8 +23,8 @@ while (false !== ($class = readdir($dh))) {
         }
     }
     $methods = [];
-    if (is_dir("$dir\\1-methods")) {
-        $d = opendir("$dir\\1-methods");
+    if (is_dir("$dir{$ds}1-methods")) {
+        $d = opendir("$dir{$ds}1-methods");
         while (false !== ($file = readdir($d))) {
             if ($file === '.' || $file === '..') {
                 continue;
@@ -30,8 +32,9 @@ while (false !== ($class = readdir($dh))) {
 
 //    $html = file_get_contents("$dir\\1-methods\\$file");
 //    $lines = file("$dir\\1-methods\\$file");
+            $str = str_replace('&nbsp;', '', file_get_contents("$dir{$ds}1-methods{$ds}$file"));
             $dom = new DOMDocument();
-            $dom->loadHTMLFile("$dir\\1-methods\\$file");
+            $dom->loadHTML($str);
             $xquery = new DOMXPath($dom);
 
             $return = [];
@@ -72,10 +75,7 @@ while (false !== ($class = readdir($dh))) {
                 for ($i = 3; $i < $result->count(); $i += 3) {
                     $name = trim($result->item($i)->textContent);
                     $type = match ($item = trim($result->item($i + 1)->textContent)) {
-                        'Array of Bytes' => 'array',
-                        'Array of Strings' => 'array',
-                        'Array of XRects' => 'array',
-                        'Array of Arrays of Bytes' => 'array',
+                        'Array of Bytes', 'Array of Strings', 'Array of XRects', 'Array of Arrays of Bytes' => 'array',
                         'String or Array of Bytes' => 'array|string',
                         'Object' => 'mixed',
                         'Double' => 'float',
@@ -117,16 +117,17 @@ while (false !== ($class = readdir($dh))) {
     }
 
     $properties = '';
-    if (is_dir("$dir\\2-properties")) {
+    if (is_dir("$dir{$ds}2-properties")) {
         $properties = [];
-        $d = opendir("$dir\\2-properties");
+        $d = opendir("$dir{$ds}2-properties");
         while (false !== ($file = readdir($d))) {
             if ($file === '.' || $file === '..') {
                 continue;
             }
 
+            $str = str_replace('&nbsp;', '', file_get_contents("$dir{$ds}2-properties{$ds}$file"));
             $dom = new DOMDocument();
-            $dom->loadHTMLFile("$dir\\2-properties\\$file");
+            $dom->loadHTML($str);
             $xquery = new DOMXPath($dom);
 
             $result = $xquery->query('//*/td[@class="pageheader"]');
@@ -141,10 +142,7 @@ while (false !== ($class = readdir($dh))) {
 
 
                     $type = match ($type) {
-                        'Array of Bytes' => 'array',
-                        'Array of Strings' => 'array',
-                        'Array of XRects' => 'array',
-                        'Array of Arrays of Bytes' => 'array',
+                        'Array of Bytes', 'Array of Strings', 'Array of XRects', 'Array of Arrays of Bytes' => 'array',
                         'String or Array of Bytes' => 'array|string',
                         'Object' => 'mixed',
                         'Double' => 'float',
@@ -174,12 +172,10 @@ while (false !== ($class = readdir($dh))) {
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
 $properties
  */
-class $class extends DOTNET
+class $class extends \DOTNET
 {
     /**
      * {@inheritDoc}
@@ -247,5 +243,5 @@ PHP;
 }
 PHP;
 
-    file_put_contents(__DIR__ . "\\..\\src\\$class.php", $file);
+    file_put_contents(dirname(__DIR__) . "{$ds}src{$ds}$class.php", $file);
 }

@@ -2,13 +2,11 @@
 
 namespace ABCPdf;
 
-use DOTNET;
-
 /**
  * @property-read ComFactory $ComFactory The factory for creating objects in the same application domain.
  * @property string $String The transform as a string.
  */
-class XTransform extends DOTNET
+class XTransform extends \DOTNET
 {
     /**
      * {@inheritDoc}
@@ -16,7 +14,7 @@ class XTransform extends DOTNET
     public function __construct(
         string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.XTransform',
-        int $codepage = CP_ACP
+        int    $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
@@ -31,7 +29,7 @@ class XTransform extends DOTNET
      * original back again. However, this kind of transform is uncommon
      * in the real world and normally only occurs as a result of programming
      * errors.If you apply the invert method to a non-invertable transform, the
-     * transform will remain unmodified. 
+     * transform will remain unmodified.
      */
     public function Invert(): void
     {
@@ -40,9 +38,10 @@ class XTransform extends DOTNET
 
     /**
      * This method stretches the world space about a locked anchor point.
-     * Different degrees of horizontal and vertical stretch can be used.Another way of looking at this kind of transform is as a zoom.
-     * The anchor point is the location you're zooming in on and the scale
-     * factors indicate the level of zoom. 
+     * Different degrees of horizontal and vertical stretch can be used.Another way of looking at this kind of
+     * transform is as a zoom. The anchor point is the location you're zooming in on and the scale factors indicate the
+     * level of zoom.
+     *
      * @param float $ScaleX The amount of horizontal scaling to apply.
      * @param float $ScaleY The amount of vertical scaling to apply.
      * @param float $AnchorX The horizontal coordinate about which the stretch should be
@@ -58,7 +57,7 @@ class XTransform extends DOTNET
     /**
      * This method resets the transform to it's original state. This state
      * is known as the identity and indicates that no transformation will
-     * be applied. 
+     * be applied.
      */
     public function Reset(): void
     {
@@ -67,7 +66,8 @@ class XTransform extends DOTNET
 
     /**
      * This method rotates the world space about a locked anchor point.
-     * The angle is specified in degrees anti-clockwise. 
+     * The angle is specified in degrees anti-clockwise.
+     *
      * @param float $Angle The angle to rotate in degrees.
      * @param float $AnchorX The horizontal coordinate about which the rotation should
      * be applied.
@@ -81,9 +81,10 @@ class XTransform extends DOTNET
 
     /**
      * This method skews the world space about a locked anchor point.
-     * Different degrees of horizontal and vertical stretch can be used.A skew or shear is a mathematical operation which shifts points
-     * by an amount proportional to the distance from the anchor point.
-     * This shift is scaled by the horizontal and vertical skew factors. 
+     * Different degrees of horizontal and vertical stretch can be used.A skew or shear is a mathematical operation
+     * which shifts points by an amount proportional to the distance from the anchor point. This shift is scaled by the
+     * horizontal and vertical skew factors.
+     *
      * @param float $SkewX The amount of horizontal skewing to apply.
      * @param float $SkewY The amount of vertical skewing to apply.
      * @param float $AnchorX The horizontal coordinate about which the stretch should be
@@ -99,7 +100,8 @@ class XTransform extends DOTNET
     /**
      * This method shifts the world space a specified distance up and
      * to the right. Objects on the PDF will appear to translate upwards
-     * and to the right. 
+     * and to the right.
+     *
      * @param float $ShiftX The distance to translate to the right.
      * @param float $ShiftY The distance to translate upwards.
      */
