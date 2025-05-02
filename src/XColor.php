@@ -16,17 +16,21 @@ namespace ABCPdf;
  * @property string $String The color as a string.
  * @property int $Yellow The yellow component.
  */
-class XColor extends \DOTNET
+
+class XColor extends BaseObject
 {
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $assembly_name = 'ABCpdf, Version=12.5.0.5, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.XColor',
-        int    $codepage = CP_ACP
+        int $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
+
+        $this->registerWrappedObject('ComFactory', new ComFactory($this->getObject()->ComFactory));
     }
+
 }

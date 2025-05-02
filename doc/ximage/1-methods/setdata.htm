@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <meta content="abcpdf, pdf, .net, c#, vb, asp,  asp.net, component, dynamic" name="keywords">
+    <meta content="text/css" http-equiv="Content-Style-Type">
+    <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+    <meta content="chm2web Pro 2.85 (unicode)" name="generator">
+    <title>ABCpdf .NET PDF Component Documentation - XImage SetData Function. Load an image from data.</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <link href="/css/wsgTheme.css" rel="stylesheet">
+    <link href="/css/wsgThemeHelpMods.css" rel="stylesheet">
+    <link href="../../../mystyles.css" rel="stylesheet" type="text/css">
+    <link href="../../../prism.css" rel="stylesheet" type="text/css">
+    <script src="../../../prism.js" type="text/javascript"></script>
+    <meta content="MSHTML 6.00.6000.16640" name="GENERATOR">
+    <script src="../../../../files/supply.js" type="text/JavaScript"></script>
+    <script type="text/JavaScript"> if (chmtop.c2wtopf) chmtop.c2wtopf.pageid = "5-abcpdf/ximage/1-methods/setdata.htm"; </script>
+</head>
+<body bgcolor="#FFFFFF">
+<script type="text/JavaScript"> if (window.name != "content") document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../default.htm?page=source%2F5-abcpdf%2Fximage%2F1-methods%2Fsetdata.htm\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../default.htm?page=source%2F5-abcpdf%2Fximage%2F1-methods%2Fsetdata.htm\">show toolbars</a><br>&nbsp;</td></tr></table><br> ");
+if (window.name != "content") window.onload = reframe("../../../../default.htm?page=source%2f5-abcpdf%2fximage%2f1-methods%2fsetdata.htm");</script>
+<!-- !chm2web! -->
+<table border="0" cellpadding="0" cellspacing="4">
+    <tbody>
+    <tr>
+        <td valign="top"><img height="60" src="../../../images/goo.gif" width="58"></td>
+        <td width="14">&nbsp;</td>
+        <td>
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                <tr>
+                    <td class="pageheader">SetData Function</td>
+                    <td width="60">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td background="../../../images/steel-line-3.gif" height="11"></td>
+                    <td background="../../../images/steel-line-3.gif" height="11" width="60"></td>
+                    <td height="11"><img height="11" src="../../../images/steel-blob-11.gif" width="11"></td>
+                </tr>
+                <tr>
+                    <td><p>Load an image from data.</p>
+                        <p>&nbsp;</p></td>
+                    <td width="60">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="sectheader" valign="top"><img height="10" src="../../../images/steel-pin.gif" width="64"><br> Syntax
+        </td>
+        <td width="14">&nbsp;</td>
+        <td valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                <tr>
+                    <td valign="top">
+                        <code>XImage.SetData(data)</code>
+                    </td>
+                    <td width="60">&nbsp;</td>
+                    <td width="11">&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="sectheader" valign="top"><img height="10" src="../../../images/steel-pin.gif" width="64"><br> Params
+        </td>
+        <td width="14">&nbsp;</td>
+        <td valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                <tr>
+                    <td valign="top">
+                        <table border="5" bordercolor="#FFFFFF" cellpadding="3" cellspacing="0" class="wsgtable">
+                            <tbody>
+                            <tr>
+                                <td align="middle"><b>Name</b></td>
+                                <td><b>Type</b></td>
+                                <td><b>Description</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td align="middle">data</td>
+                                <td>Array of Bytes</td>
+                                <td>The data containing the graphic.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p>&nbsp;</p></td>
+                    <td width="60">&nbsp;</td>
+                    <td width="11">&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="sectheader" valign="top"><img height="10" src="../../../images/steel-pin.gif" width="64"><br> Notes
+        </td>
+        <td width="14">&nbsp;</td>
+        <td valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                <tr>
+                    <td><p>Load an image from data. The data is expected to be provided as an array of bytes.</p>
+                        <p>The data can be any of the following types: JPEG, GIF, TIFF, BMP, PNG, PSD, PDB, EXIF, WMF,
+                            EMF, EPS, PS or SWF (Flash).</p>
+                        <p>Ultimately each import goes through a ReadModule so for details of additional formats
+                            supported and the way they are imported, see the ReadModule property.</p>
+                        <p>Different images within the file can be accessed using the Frame property. Different portions
+                            of the image can be selected using the Selection property.</p>
+                        <p>&nbsp;</p></td>
+                    <td width="60">&nbsp;</td>
+                    <td width="11">&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="sectheader" valign="top"><img height="10" src="../../../images/steel-pin.gif" width="64"><br> Example
+        </td>
+        <td width="14">&nbsp;</td>
+        <td valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                <tr>
+                    <td><p>Here we read a TIFF file and present the data to the XImage object. We then add the image to
+                        our document and then save the PDF.</p>
+                        <p>
+                        <p>&nbsp;</p>
+                        <div class="tab-frame">
+                            <div class="tab-header">
+                                <button class="tab-button-clicked" id="csbutton0"
+                                        onclick="document.getElementById('cs0').style.display = 'block'; document.getElementById('vb0').style.display = 'none'; document.getElementById('csbutton0').className = 'tab-button-clicked'; document.getElementById('vbbutton0').className = 'tab-button'">
+                                    [C#]
+                                </button>
+                                <button class="tab-button" id="vbbutton0"
+                                        onclick="document.getElementById('vb0').style.display = 'block'; document.getElementById('cs0').style.display = 'none'; document.getElementById('csbutton0').className = 'tab-button';document.getElementById('vbbutton0').className = 'tab-button-clicked';">
+                                    [Visual Basic]
+                                </button>
+                            </div>
+                            <div class="tab" id="cs0"><code class="language-csharp">XImage theImg = new XImage(); Doc
+                                doc = new Doc(); // read the data from a file string thePath =
+                                Server.MapPath("../mypics/mypic.jpg"); FileStream theStream = File.OpenRead(thePath);
+                                byte[] theData = new byte[theStream.Length]; theStream.Read(theData, 0,
+                                (int)theStream.Length); theStream.Close(); // place the data into the image
+                                theImg.SetData(theData); doc.Rect.Inset(20, 20); doc.AddImageObject(theImg, false);
+                                theImg.Clear(); doc.Save(Server.MapPath("imagesetdata.pdf")); doc.Clear(); </code></div>
+                            <div class="tab" id="vb0" style="display: none"><code class="language-vbnet">Dim theImg As
+                                New XImage() Dim doc As New Doc() ' read the data from a file Dim thePath As String =
+                                Server.MapPath("../mypics/mypic.jpg") Dim theStream As FileStream =
+                                File.OpenRead(thePath) Dim theData As Byte() = New Byte(theStream.Length - 1) {}
+                                theStream.Read(theData, 0, DirectCast(theStream.Length, Integer)) theStream.Close() '
+                                place the data into the image theImg.SetData(theData) doc.Rect.Inset(20, 20)
+                                doc.AddImageObject(theImg, False) theImg.Clear()
+                                doc.Save(Server.MapPath("imagesetdata.pdf")) doc.Clear() </code></div>
+                        </div>
+                        <p><img class="example" src="../../../images/pdf/imagesetdata.pdf.png"><br> imagesetdata.pdf</p>
+                        <p>&nbsp;</p></td>
+                    <td width="60">&nbsp;</td>
+                    <td width="11">&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<script type="text/JavaScript"> var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+    if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid) chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+} </script>
+<script crossorigin="anonymous"
+        integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/agency.js"></script>
+<script src="/js/highlighting.js"></script>
+<asp:ContentPlaceHolder ID="PageScripts" runat="server"/>  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GW1TH344ZC"></script>
+<script>   window.dataLayer = window.dataLayer || [];
+
+function gtag() {
+    dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+gtag('config', 'G-GW1TH344ZC'); </script>
+<script type="text/javascript">     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E")); </script>
+<script type="text/javascript">     var pageTracker = _gat._getTracker("UA-1226930-1");
+pageTracker._setDomainName("none");
+pageTracker._setAllowLinker(true);
+pageTracker._trackPageview(); </script>
+<script type="text/javascript"> $(document).ready(function () {
+    var query = chmtop.c2wtopf.searchquery;
+    if (query) HighlightUserSearch(query); else HighlightWebSearch();
+}); </script>
+</body>
+</html>

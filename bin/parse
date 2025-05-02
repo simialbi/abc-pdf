@@ -5,6 +5,7 @@ $ds = DIRECTORY_SEPARATOR;
 $root = dirname(__DIR__) . "{$ds}doc$ds";
 
 $dh = opendir($root);
+$objects = [];
 while (false !== ($class = readdir($dh))) {
     if ($class === '.' || $class === '..') {
         continue;
@@ -52,6 +53,9 @@ while (false !== ($class = readdir($dh))) {
                     $tmp = [];
                     for ($i = 0; $i < count($params); $i++) {
                         $param = trim($params[$i], ' []');
+                        if ($param === '') {
+                            continue;
+                        }
                         $tmp[$param] = [
                             'required' => true
                         ];
@@ -74,23 +78,28 @@ while (false !== ($class = readdir($dh))) {
             if ($result->count()) {
                 for ($i = 3; $i < $result->count(); $i += 3) {
                     $name = trim($result->item($i)->textContent);
+                    if (preg_match('#^(?:Set )?(?:([^ ]+) = )?$class\.([^\( ]+)\(?([^\(\)]*)?\)?$#', $name, $matches)) {
+                        $return = ['name' => $matches[1], 'type' => 'string'];
+                        $method = preg_replace("#^$class\.(.*)$#", '$1', $matches[2]);
+                        $params = explode(',', $matches[3]);
+                    }
                     $type = match ($item = trim($result->item($i + 1)->textContent)) {
-                        'Array of Bytes', 'Array of Strings', 'Array of XRects', 'Array of Arrays of Bytes' => 'array',
+                        'Array of Bytes', 'Array of Strings', 'Array of XRects', 'Array of Arrays of Bytes', 'Array each of whose items is either String or Array of Bytes' => 'array',
                         'String or Array of Bytes' => 'array|string',
-                        'Object' => 'mixed',
+                        'Object', '' => 'mixed',
                         'Double' => 'float',
                         'Boolean' => 'bool',
                         'String' => 'string',
                         'Long' => 'int',
                         default => $item
                     };
-                    $desc = trim(implode("\n", array_map('trim', explode("\n", $result->item($i + 2)->textContent))));
+                    $desc = trim(implode(" ", array_map('trim', explode("\n", $result->item($i + 2)->textContent))));
 
                     if ($return['name'] === $name) {
-                        $return['desc'] = $desc;
+                        $return['description'] = $desc;
                         $return['type'] = $type;
                     } elseif (isset($params[$name])) {
-                        $params[$name]['desc'] = $desc;
+                        $params[$name]['description'] = $desc;
                         $params[$name]['type'] = $type;
                     }
                 }
@@ -100,15 +109,14 @@ while (false !== ($class = readdir($dh))) {
             if ($result->count()) {
                 $desc = '';
                 for ($i = 0; $i < $result->count(); $i++) {
-                    $desc .= trim(implode("\n", array_map('trim', explode("\n", $result->item($i)->textContent))));
+                    $desc .= trim(implode(' ', array_map('trim', explode("\n", $result->item($i)->textContent))));
                 }
             } else {
                 $desc = '';
             }
 
-            $methods[] = [
-                'name' => $method,
-                'desc' => $desc,
+            $methods[$method] = [
+                'description' => str_replace('*/', '/', preg_replace('#(\w)\.(\w)#', '$1. $2', $desc)),
                 'params' => $params,
                 'return' => $return
             ];
@@ -116,9 +124,8 @@ while (false !== ($class = readdir($dh))) {
         closedir($d);
     }
 
-    $properties = '';
+    $properties = [];
     if (is_dir("$dir{$ds}2-properties")) {
-        $properties = [];
         $d = opendir("$dir{$ds}2-properties");
         while (false !== ($file = readdir($d))) {
             if ($file === '.' || $file === '..') {
@@ -140,7 +147,6 @@ while (false !== ($class = readdir($dh))) {
                     $readOnly = trim($result->item(2)->textContent);
                     $description = trim($result->item(3)->textContent);
 
-
                     $type = match ($type) {
                         'Array of Bytes', 'Array of Strings', 'Array of XRects', 'Array of Arrays of Bytes' => 'array',
                         'String or Array of Bytes' => 'array|string',
@@ -148,100 +154,145 @@ while (false !== ($class = readdir($dh))) {
                         'Double' => 'float',
                         'Boolean' => 'bool',
                         'String' => 'string',
-                        'Long' => 'int',
+                        'Long', 'Integer' => 'int',
                         default => $type
                     };
 
-                    $property = " * @property";
-                    if ($readOnly === 'Yes') {
-                        $property .= "-read";
+                    if (str_contains($type, ' Collection')) {
+                        $type = 'array';
                     }
-                    $property .= " $type \$$name $description";
 
-                    $properties[] = $property;
+                    $properties[$name] = [
+                        'type' => $type,
+                        'description' => $description,
+                        'readonly' => $readOnly === 'Yes'
+                    ];
                 }
             }
         }
 
-        $properties = implode("\n", $properties);
         closedir($d);
     }
 
+    $objects[$class] = [
+        'methods' => $methods,
+        'properties' => $properties,
+    ];
+}
+
+closedir($dh);
+
+//var_dump($objects['Doc']['methods']['GetData']); exit();
+
+foreach ($objects as $class => $object) {
     $file = <<<PHP
 <?php
 
 namespace ABCPdf;
 
 /**
-$properties
+
+PHP;
+    foreach ($object['properties'] as $property => $meta) {
+        $file .= ' * @property' . ($meta['readonly'] ? '-read' : '') . " {$meta['type']} \${$property} {$meta['description']}\n";
+    }
+    $file .= <<<PHP
  */
-class $class extends \DOTNET
+
+class {$class} extends BaseObject
 {
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string \$assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string \$assembly_name = 'ABCpdf, Version=12.5.0.5, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string \$datatype_name = 'WebSupergoo.ABCpdf12.$class',
         int \$codepage = CP_ACP
     )
     {
         parent::__construct(\$assembly_name, \$datatype_name, \$codepage);
+
+
+PHP;
+    foreach ($object['properties'] as $property => $meta) {
+        if (!in_array($meta['type'], ['array', 'array|string', 'int', 'bool', 'float', 'string', 'mixed'])) {
+            $file .= <<<PHP
+        \$this->registerWrappedObject('$property', new {$meta['type']}(\$this->getObject()->$property));
+
+PHP;
+        }
+    }
+    $file .= <<<PHP
     }
 
 PHP;
 
+    foreach ($object['methods'] as $method => $meta) {
+        $description = splitDescription($meta['description'], 120, ' * ', 4);
+        $file .= <<<PHP
+    /**
+$description
+     *
 
-    foreach ($methods as $method) {
-        $desc = str_replace(["\n", '*/'], ["\n     * ", '/'], $method['desc']);
-        $file .= "\n    /**\n     * $desc\n";
-        if (count($method['params']) === 1 && array_key_exists('', $method['params'])) {
-            $method['params'] = [];
+PHP;
+        foreach ($meta['params'] as $name => $param) {
+            $req = (!$param['required'] && $param['type'] !== 'mixed') ? '?' : '';
+            $file .= "     * @param $req{$param['type']} \$$name {$param['description']}\n";
         }
-        foreach ($method['params'] as $name => $param) {
-            $desc = str_replace("\n", "\n     * ", $param['desc']);
-            $file .= "     * @param {$param['type']}" . ($param['required'] ? '' : (empty($param['type']) ? 'mixed' : '|null')) . " \$$name $desc\n";
+        if (!empty($meta['return']['name'])) {
+            $file .= "     *\n     * @return {$meta['return']['type']} {$meta['return']['description']}\n";
+        } else {
+            $file .= "     *\n     * @return void\n";
         }
-        if (!empty($method['return']['name'])) {
-            $file .= "     * @return {$method['return']['type']} {$method['return']['desc']}\n";
-        }
-        $file .= "     */\n    public function {$method['name']}(";
-        foreach ($method['params'] as $name => $param) {
-            if (!empty($param['type'])) {
-                $file .= $param['type'];
+        $file .= <<<PHP
+     */
+    public function {$method}(
+PHP;
+        foreach ($meta['params'] as $name => $param) {
+            if (!$param['required'] && $param['type'] !== 'mixed') {
+                $file .= "?";
             }
-            if (!$param['required']) {
-                if (empty($param['type'])) {
-                    $file .= 'mixed';
-                } else {
-                    $file .= '|null';
-                }
-            }
-            $file .= " \$$name";
+            $file .= "{$param['type']} \$$name";
             if (!$param['required']) {
                 $file .= ' = null';
             }
-            $file .= ', ';
+            $file .= ", ";
         }
-        if (!empty($method['params'])) {
+        if (!empty($meta['params'])) {
             $file = substr($file, 0, -2);
         }
-        if (!empty($method['return']['name'])) {
-            $file .= "): {$method['return']['type']}\n    {\n        return parent::{$method['name']}(";
+        $file .= ")";
+        if (!empty($meta['return']['name'])) {
+            $file .= ": {$meta['return']['type']}\n    {\n        return \$this->__call('$method', func_get_args());\n    }\n\n";
         } else {
-            $file .= "): void\n    {\n        parent::{$method['name']}(";
+            $file .= ": void\n    {\n        \$this->__call('$method', func_get_args());\n    }\n\n";
         }
-        foreach ($method['params'] as $name => $param) {
-            $file .= "\$$name, ";
-        }
-        if (!empty($method['params'])) {
-            $file = substr($file, 0, -2);
-        }
-        $file .= ");\n    }\n";
     }
+
     $file .= <<<PHP
+
 }
 PHP;
 
+
     file_put_contents(dirname(__DIR__) . "{$ds}src{$ds}$class.php", $file);
+}
+
+
+function splitDescription (string $description, int $maxWidth = 120, string $prefix = '', int $whiteSpaces = 0): string
+{
+    $words = preg_split('/\s+/u', trim($description), 0, PREG_SPLIT_DELIM_CAPTURE);
+    $lines = [];
+    while (count($words)) {
+        $line = '';
+        while (strlen($line) + strlen($prefix) + $whiteSpaces <= $maxWidth) {
+            $line .= array_shift($words) . ' ';
+        }
+        $lines[] = $line;
+    }
+    $result = '';
+    foreach ($lines as $line) {
+        $result .= str_repeat(' ', $whiteSpaces) . $prefix . $line . "\n";
+    }
+    return rtrim($result, "\n");
 }

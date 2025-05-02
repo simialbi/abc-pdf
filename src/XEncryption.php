@@ -19,32 +19,37 @@ namespace ABCPdf;
  * @property-read int $StringCryptionMethod The crypt method for strings for encryption levels of type 4 or above.
  * @property int $Type The level of encryption to use.
  */
-class XEncryption extends \DOTNET
+
+class XEncryption extends BaseObject
 {
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.4, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        string $assembly_name = 'ABCpdf, Version=12.5.0.5, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.XEncryption',
-        int    $codepage = CP_ACP
+        int $codepage = CP_ACP
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);
-    }
 
+        $this->registerWrappedObject('ComFactory', new ComFactory($this->getObject()->ComFactory));
+    }
     /**
-     * The default crypt method for Type
-     * 4 is V2, which uses RC4 algorithm. Crypt method settings are in effect only when Type is 4 or higher.The
-     * StringMethod and StreamMethod parameters can take any of the following values:Adobe Reader does not support
-     * using more than one crypt method per document (i.e. stringMethod≠streamMethod). However, Identity is degenerate
-     * and can be used with other crypt methods.
+     * The default crypt method for Type 4 is V2, which uses RC4 algorithm. Crypt method settings are in effect only when 
+     * Type is 4 or higher. The StringMethod and StreamMethod parameters can take any of the following values:Adobe Reader 
+     * does not support using more than one crypt method per document (i. e. stringMethod≠streamMethod). However, Identity 
+     * is degenerate and can be used with other crypt methods.                                                           
      *
      * @param int $StringMethod The crypt method for strings. It is also for streams if StreamMethod is missing.
-     * @param int|null $StreamMethod The crypt method for streams (optional).
+     * @param ?int $StreamMethod The crypt method for streams (optional).
+     *
+     * @return void
      */
-    public function SetCryptMethods(int $StringMethod, int|null $StreamMethod = null): void
+    public function SetCryptMethods(int $StringMethod, ?int $StreamMethod = null): void
     {
-        parent::SetCryptMethods($StringMethod, $StreamMethod);
+        $this->__call('SetCryptMethods', func_get_args());
     }
+
+
 }
