@@ -21,9 +21,9 @@ class XSaveOptions extends BaseObject
      * {@inheritDoc}
      */
     public function __construct(
-        string $assembly_name = 'ABCpdf, Version=12.5.0.5, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        mixed $assembly_name = 'ABCpdf, Version=12.5.0.5, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string $datatype_name = 'WebSupergoo.ABCpdf12.XSaveOptions',
-        int $codepage = CP_ACP
+        int $codepage = CP_UTF8
     )
     {
         parent::__construct($assembly_name, $datatype_name, $codepage);

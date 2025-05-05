@@ -86,7 +86,7 @@ while (false !== ($class = readdir($dh))) {
                     $type = match ($item = trim($result->item($i + 1)->textContent)) {
                         'Array of Bytes', 'Array of Strings', 'Array of XRects', 'Array of Arrays of Bytes', 'Array each of whose items is either String or Array of Bytes' => 'array',
                         'String or Array of Bytes' => 'array|string',
-                        'Object', '' => 'mixed',
+                        'Object', 'Variant', '' => 'mixed',
                         'Double' => 'float',
                         'Boolean' => 'bool',
                         'String' => 'string',
@@ -150,7 +150,7 @@ while (false !== ($class = readdir($dh))) {
                     $type = match ($type) {
                         'Array of Bytes', 'Array of Strings', 'Array of XRects', 'Array of Arrays of Bytes' => 'array',
                         'String or Array of Bytes' => 'array|string',
-                        'Object' => 'mixed',
+                        'Object', 'Variant', '' => 'mixed',
                         'Double' => 'float',
                         'Boolean' => 'bool',
                         'String' => 'string',
@@ -205,9 +205,9 @@ class {$class} extends BaseObject
      * {@inheritDoc}
      */
     public function __construct(
-        string \$assembly_name = 'ABCpdf, Version=12.5.0.5, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
+        mixed \$assembly_name = 'ABCpdf, Version=12.5.0.5, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169',
         string \$datatype_name = 'WebSupergoo.ABCpdf12.$class',
-        int \$codepage = CP_ACP
+        int \$codepage = CP_UTF8
     )
     {
         parent::__construct(\$assembly_name, \$datatype_name, \$codepage);
